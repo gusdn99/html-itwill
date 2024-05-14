@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Pseudo Selector</title>
+        
+        <style>
+            table#tbl-member, table#tbl-member th, table#tbl-member td {
+                border: 1px solid darkgray;
+                border-collapse: collapse;
+            }
+            
+            table#tbl-blog {
+                width: 100%; /* 브라우저에서 사용 가능한 가로 길이의 100%를 사용 */
+            }
+            
+            table#tbl-blog, table#tbl-blog th, table#tbl-blog td {
+                border-bottom: 1px solid black;
+                border-collapse: collapse;
+            }
+            
+            table#tbl-blog th {
+                background-color: darkseagreen;
+                color: white;
+                text-align: left;
+            }
+            
+            table#tbl-blog > tbody > tr:nth-child(even) {
+                background-color: #efefef; /* RGB의 크기 값을 사용한 색깔 표현 */
+            }
+            
+            table#tbl-blog > tbody > tr:hover {
+                background-color: #e0e0e0;
+            }
+        </style>
+        
+    </head>
+    <body>
+		<nav>
+            <a href="index.html">인덱스 페이지</a>
+        </nav>
+        <main>
+            <h1>테이블 스타일</h1>
+            
+            <table id="tbl-member">
+                <caption>회원 정보</caption>
+                <thead>
+                    <tr>        
+                        <th>아이디</th>
+                        <th>닉네임</th>
+                        <th>이메일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>혀누</td>
+                        <td>gusn</td>
+                        <td>gusn@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>기며누</td>
+                        <td>rlausn</td>
+                        <td>rlausn@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>기면우</td>
+                        <td>rlausdn</td>
+                        <td>rlausdn@gmail.com</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr />
+            
+            <table id="tbl-blog">
+                <caption>블로그</caption>
+                <thead>
+                    <tr>        
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성자</th>
+                        <th>시간</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>1교시</td>
+                        <td>나</td>
+                        <td>9시 30분</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2교시</td>
+                        <td>또 나</td>
+                        <td>10시 30분</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>3교시</td>
+                        <td>또또 나</td>
+                        <td>11시 30분</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>4교시</td>
+                        <td>또또또 나</td>
+                        <td>1시 30분</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+	</body>
+</html>

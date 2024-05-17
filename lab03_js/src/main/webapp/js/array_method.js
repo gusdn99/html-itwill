@@ -32,8 +32,8 @@ console.log(result); // (5) [1, 2, 3, 100, 200]
  // - 오름차순 정렬된 "새로운" 배열을 리턴.
  // - 원본 배열은 변경되지 X
  // toSorted(callback): 배열 원소들의 크기 비교를 할 때 사용할 콜백을 아규먼트로 전달.
- result = arr2.toSorted((x, y) => x - y); // 원본 배열을 오름차순 정렬한 "새로운" 배열을 리턴.
- console.log(arr2); // (4) [10, 100, -1, 90] -> toSorted() 메서드는 원본 배열을 변경하지 X
+ result = arr2.toSorted((x, y) => x - y);
+ console.log(arr2); // (4) [10, 100, -1, 90]
  console.log(result);// (4) [-1, 10, 90, 100]
  
  // sort():

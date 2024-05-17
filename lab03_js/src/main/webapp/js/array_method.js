@@ -43,4 +43,43 @@ console.log(result); // (5) [1, 2, 3, 100, 200]
  arr.sort((x, y) => x - y);
  console.log(arr2); // (4) [10, 100, -1, 90]
  
+// forEach, filter, map, reduce:
+const numbers = [1, 2, 3, 4, 5, 6];
+console.log(numbers); // (6) [1, 2, 3, 4, 5, 6]
+
+// forEach
+numbers.forEach((x) => console.log(x));
+
+// 배열 numbers의 원소들 중에서 홀수들로만 이루어진 새로운 배열 만들기.
+const odds = []; // concat의 경우: let odds = [];
+for (let x of numbers) {
+    if (x % 2) {
+        odds.push(x); // concat의 경우: odds = odds.concat(x);
+    }
+}
+console.log(odds); // (3) [1, 3, 5]
+
+// filter
+// result = numbers.filter(function (x) { // 익명 함수
+//   return x % 2;
+// });
+result = numbers.filter((x) => x % 2); // 화살표 함수
+console.log(result); // (3) [1, 3, 5]
+
+
+// 배열 numbers의 원소들의 제곱을 원소로 갖는 새로운 배열 만들기.
+const squares = [];
+for (let x of numbers) {
+    squares.push(x * x);
+}
+
+
+console.log(squares); // (6) [1, 4, 9, 16, 25, 36]
+
+// map
+result = numbers.map((x) => x * x);
+console.log(result); // (6) [1, 4, 9, 16, 25, 36]
+
+
+ 
  

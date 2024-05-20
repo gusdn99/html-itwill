@@ -44,7 +44,6 @@ username.addEventListener('change', function(e) {
     bulb_on.src = 'images/bulb_on.gif';
  });
  
-
  // TODO: img#bulb 요소에 'mouseLeave' 이벤트 리스너를 등록:
  // img의 src를 'images/bulb_off.gif'로 변경.
 const bulb_off = document.querySelector('img#bulb');

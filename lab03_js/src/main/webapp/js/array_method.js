@@ -77,6 +77,39 @@ console.log(squares); // (6) [1, 4, 9, 16, 25, 36]
 result = numbers.map((x) => x * x);
 console.log(result); // (6) [1, 4, 9, 16, 25, 36]
 
+// 배열 numbers의 모든 원소들의 합계
+let sum = 0;
+for (let value of numbers) {
+    sum += value; // sum = sum + value;
+}
+console.log(`sum = ${sum}`);
 
+// reduce(callback, initialValue)
+sum = numbers.reduce((acc, cur) => acc + cur, 0); // acc: 계산할 값, cur: 배열의 원소
+console.log(`sum = ${sum}`);
+
+// numbers의 모든 원소들의 곱: 1 x 2 x ... x 5 x 6
+result = 1;
+for (let value of numbers) {
+    result *= value;
+}
+console.log(`result = ${result}`);
+
+result = numbers.reduce((acc, cur) => acc * cur, 1);
+console.log(`result = ${result}`);
+
+// numbers의 원소들 중에서 짝수들의 합: 2 + 4 + 6
+result = numbers.filter((x) => x % 2 === 0);
+console.log(`result = ${result}`);
+sum = result.reduce((acc, cur) => acc + cur, 0);
+console.log(`짝수들의 합 = ${sum}`);
+
+// numbers의 원소들의 제곱의 합: 1 + 4 + 9 + 16 + 25 + 36
+result = numbers.map((x) => x * x).reduce((acc, cur) => acc + cur, 0);
+console.log(`제곱의 합 = ${result}`);
+
+// numbers의 원소들 중에서 짝수들의 제곱의 합: 4 + 16 + 36
+result = numbers.filter((x) => x % 2 === 0).map((x) => x * x).reduce((acc, cur) => acc + cur, 0);
+console.log(`짝수들의 제곱의 합 = ${result}`);
  
  

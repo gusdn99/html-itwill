@@ -117,23 +117,23 @@
     }
     
     area() {
-        return this.radius * this.radius * Math.PI;
+        return this.radius * this.radius * 3.14;
     }
     
     perimeter() {
-        return this.radius * 2 * Math.PI;
+        return this.radius * 2 * 3.14;
     }
  }
  
  const cir1 = new Circle(3);
- console.log(cir1);
+ console.log(cir1); // Circle {radius: 3}
  console.log(`넓이 = ${cir1.area()}`);
  console.log(`길이 = ${cir1.perimeter()}`);
  
- const cir2 = new Circle();
- console.log(cir2);
- console.log(`넓이 = ${cir2.area()}`);
- console.log(`길이 = ${cir2.perimeter()}`);
+ const cir2 = new Circle(); // -> 생성자의 default parameter가 사용되는 경우.
+ console.log(cir2); // Circle {radius: 0}
+ console.log(`넓이 = ${cir2.area()}`); // 넓이 = 0
+ console.log(`길이 = ${cir2.perimeter()}`); // 길이 = 0
  
  
  

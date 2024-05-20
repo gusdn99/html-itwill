@@ -66,14 +66,11 @@ console.log(odds); // (3) [1, 3, 5]
 result = numbers.filter((x) => x % 2); // 화살표 함수
 console.log(result); // (3) [1, 3, 5]
 
-
 // 배열 numbers의 원소들의 제곱을 원소로 갖는 새로운 배열 만들기.
 const squares = [];
 for (let x of numbers) {
     squares.push(x * x);
 }
-
-
 console.log(squares); // (6) [1, 4, 9, 16, 25, 36]
 
 // map

@@ -31,7 +31,7 @@
  // TODO: input#username 요소에 'change' 이벤트 리스너를 등록:
  // input에 입력된 내용이 바뀔 때마다 div를 입력 내용으로 덮어씀.
 const username = document.querySelector('input#username');
-username.addEventListener('change', (e) => {
+username.addEventListener('change', () => {
     // 'change'는 input이 편집상태가 아니고(포커스를 잃어버린 상태), input에 입력된 값이 이전과 달라진 경우에 발생함.
     const output = document.querySelector('div#output');
     output.innerHTML = username.value;
@@ -41,13 +41,15 @@ username.addEventListener('change', (e) => {
  // TODO: img#bulb 요소에 'mouseenter' 이벤트 리스너를 등록:
  // img의 src를 'images/bulb_on.gif'로 변경.
  const bulb_on = document.querySelector('img#bulb');
- bulb.addEventListener('mouseenter', function(e) {
+ bulb.addEventListener('mouseenter', function() {
     bulb_on.src = 'images/bulb_on.gif';
+    bulb_on.alt = 'bulb_on';
  });
  
  // TODO: img#bulb 요소에 'mouseleave' 이벤트 리스너를 등록:
  // img의 src를 'images/bulb_off.gif'로 변경.
 const bulb_off = document.querySelector('img#bulb');
- bulb.addEventListener('mouseleave', (e) => {
+ bulb.addEventListener('mouseleave', () => {
     bulb_off.src = 'images/bulb_off.gif';
+    bulb_off.alt = 'bulb_off';
  });

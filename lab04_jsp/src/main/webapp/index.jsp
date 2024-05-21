@@ -18,6 +18,15 @@
             <li>
                 <a href="ex1">첫번째 서블릿</a>
             </li>
+            <li>
+                <a href="ex2">두번째 서블릿</a>
+            </li>
+            <li>
+                <a href="ex3">포워드(forward)</a>
+            </li>
+            <li>
+                <a href="ex4">리다이렉트(redirect)</a>
+            </li>
         </ul>
     </main>
 </body>

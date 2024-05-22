@@ -1,6 +1,10 @@
 <%@page import="java.time.LocalDateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
+<%-- page 지시문 trimDirectiveWhitespaces 속성:
+  jsp 파일이 java 코드로 변환되는 과정에서 JSP 태그들이 빈줄로 대체되는데,
+  빈 줄을 삭제할(true) 것인지, 아닌지를(false: 기본값) 설정하는 속성.    
+--%>
 
 <%-- JSP 주석
 1. Servlet(Server + Applet): WAS에서 실행되는, 요청을 처리하고 응답을 보내는 작은 자바 프로그램.

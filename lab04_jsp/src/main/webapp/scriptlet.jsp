@@ -40,7 +40,7 @@
             <tbody>
             <%
             for (Contact c : data) {
-                out.print("<tr>");
+                out.print("<tr>"); // out은 내장 객체
                 out.print("<td>" + c.getId() + "</td>");
                 out.print("<td>" + c.getName() + "</td>");
                 out.print("<td>" + c.getPhone() + "</td>");

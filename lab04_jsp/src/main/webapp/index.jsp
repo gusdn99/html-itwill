@@ -10,7 +10,7 @@
 <body>
     <header>
        <h1>Contents</h1>
-       <h2><%= LocalDateTime.now() %></h2>
+       <h2><%= LocalDateTime.now() %></h2> <!-- expression은 아규먼트라서 세미콜론(;) 안씀 -->
     </header>
     
     <main>
@@ -26,6 +26,9 @@
             </li>
             <li>
                 <a href="ex4">리다이렉트(redirect)</a>
+            </li>
+            <li>
+                <a href="intro.jsp">JSP 소개</a>
             </li>
         </ul>
     </main>

@@ -3,7 +3,7 @@
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
 <%-- page 지시문 trimDirectiveWhitespaces 속성:
   jsp 파일이 java 코드로 변환되는 과정에서 JSP 태그들이 빈줄로 대체되는데,
-  빈 줄을 삭제할(true) 것인지, 아닌지를(false: 기본값) 설정하는 속성.    
+  빈 줄을 삭제할(true) 것인지, 아닌지를(false: 기본값) 설정하는 속성.
 --%>
 
 <%-- JSP 주석

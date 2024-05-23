@@ -63,7 +63,7 @@
   // button#btn5인 요소를 찾음:
  const btn5 = document.querySelector('button#btn5');
  btn5.addEventListener('click', () => {
-    const divs = document.querySelectorAll('div.c2'); // NodeList(배열과 비슷)를 리턴.
+    const divs = document.querySelectorAll('div.c2'); // -> NodeList(배열과 비슷)를 리턴.
     // console.log(divs); // NodeList(2) [div#id3.c2, div#id4.c2]
     
  //   for (let e of divs) {

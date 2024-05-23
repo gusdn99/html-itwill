@@ -29,10 +29,11 @@
             </c:otherwise>
         </c:choose>
         
-        <c:if test="${ param.username eq 'admin' }">
+        <c:if test="${ param.username eq 'admin' }"> <%-- ${ param.username == 'admin' } --%>
             <h3>Admin Page</h3>
         </c:if>
-        <c:if test="${ param.username ne 'admin' }"> <%-- jstl에서 <c:if>은 <c:else> 태그가 있지 X. ne(not equal): 다르다면 --%>
+        <c:if test="${ param.username ne 'admin' }"> <%-- ${ param.username != 'admin' } --%>
+        <%-- jstl에서 <c:if>은 <c:else> 태그가 있지 X. ne(not equal): 다르다면 --%>
             <h3>User Page</h3>
         </c:if>
         

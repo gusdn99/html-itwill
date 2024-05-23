@@ -57,6 +57,30 @@
         request id = ${ requestScope.id } <br/>
         session id = ${ sessionScope.id } <br/>
         </p>
+        <%--
+        EL vs JSP 내장 객체
+        o. pageScope - pageContext
+        o. requestScope - request
+        o. sessionScope - session
+        o. applicationScope - application
+        
+        EL에서 ${ attr }에서 상태 정보를 찾는 순서:
+        (1) ${ pageScope.attr }
+        (2) ${ requestScope.attr }
+        (3) ${ sessionScope.attr }
+        (4) ${ applicationScope.attr }
+        --%>
+        <p>EL: id = ${ id }</p> <%-- 56번째 줄이랑 같은 값이 나옴. --%> <%-- ${ pageScope.id }와 동일 --%>
+        
+        <% request.setAttribute("username", "scott"); %>
+        <p>EL: username = ${ username }</p> <%-- ${ requestScope.username } --%>
+        
+        <h2>EL 삼항 연산자</h2>
+        <% pageContext.setAttribute("number", 123); %>
+        <p>${ number } = ${ (number % 2 == 1) ? '홀수' : '짝수' } </p>
+        
+        <% session.setAttribute("logInUser", "admin"); %>
+        <p>${ (logInUser != null) ? '안녕하세요,' : '로그인 하세요' } ${ logInUser }!</p>
         
     </main>
 

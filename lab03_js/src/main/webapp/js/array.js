@@ -6,7 +6,6 @@
  * 자바스크립트 배열에서는 다른 타입의 값들이 저장될 수 O
  */
 
-
  // div#output인 요소를 찾음:
  const output = document.querySelector('div#output');
  

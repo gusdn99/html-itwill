@@ -48,7 +48,7 @@
         
         <h2>액션 태그 자바 빈을 사용한 객체 생성</h2>
         <jsp:useBean id="contact2" class="com.itwill.lab04.model.Contact"></jsp:useBean>
-        <%-- Contact contact2 = new Contact(); --%>
+        <%-- Contact contact2 = new Contact(); 기본 생성자 --%>
         <%-- import와 상관없이 class에는 패키지명부터 적어야 함. --%>
         
         <jsp:setProperty property="id" name="contact2" value="2" /> <%-- contact2.setId(2) --%>

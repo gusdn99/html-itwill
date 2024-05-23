@@ -2,7 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %> <%--  --%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> <%-- jstl 사용하려면 적어야 함. --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -97,7 +97,17 @@
          </table>
          
          <h2>URL 태그</h2>
-         <a href="result.jsp?username=guest&color=crimson">클릭</a>
+         <a href="result.jsp?username=gu&est&color=crimson">클릭1</a> <%-- 안녕하세요, gu! --%>
+         
+         <%-- 질의 문자열의 요청 파라미터 값에 특수 기호가 포함될 때(gu%est& --%>
+         <c:url value="result.jsp" var="url">
+            <c:param name="username" value="gu&est" /> <%-- 끝나는 컨텐트 안 적어도 됨. --%>
+            <c:param name="color"  value="crimson" />
+         </c:url>
+         <a href="${ url }">클릭2</a> <%-- 안녕하세요, gu&est! --%>
+        <%-- http://localhost:8080/lab04/result.jsp?username=gu%26est&color=crimson
+        숫자 26은 "&"의 UTF 코드
+         --%> 
          
          
     </main>

@@ -14,7 +14,7 @@
         
         <form method="get" action="form_result.jsp">
             <div>
-                <input type="text" name="username" placeholder="사용자 이름"  required autofocus />
+                <input type="text" name="username" placeholder="사용자 이름"  required autofocus /> <!-- autofocus: 마우스 커서가 자동으로 맞춰짐. -->
             </div>
             <div>
                 <select name="color">

@@ -5,8 +5,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>scriptlet</title>
+    <meta charset="UTF-8">
+    <title>scriptlet</title>
 </head>
 <body>
     <%@ include file="header.jspf" %>

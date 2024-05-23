@@ -3,8 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<title>form</title>
+    <meta charset="UTF-8" />
+    <title>form</title>
 </head>
 <body>
     <%@ include file="header.jspf" %>

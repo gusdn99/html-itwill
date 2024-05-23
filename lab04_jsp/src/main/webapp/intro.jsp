@@ -50,8 +50,8 @@ printLog("intro.jsp 실행...");
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<title>JSP</title>
+    <meta charset="UTF-8" />
+    <title>JSP</title>
 </head>
 <body>
     <nav>

@@ -48,6 +48,9 @@
             <li>
                 <a href="jstl.jsp">JSTL</a>
             </li>
+            <li>
+                <a href="mvc">MVC</a>
+            </li>
         </ul>
     </main>
 </body>

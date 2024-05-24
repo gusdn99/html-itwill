@@ -14,5 +14,5 @@
     <servlet-name>firstServlet</servlet-name>
     <url-pattern>/ex1</url-pattern>
   </servlet-mapping>
- 
+  
 </web-app>

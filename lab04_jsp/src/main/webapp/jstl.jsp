@@ -108,8 +108,7 @@
         <%-- http://localhost:8080/lab04/result.jsp?username=gu%26est&color=crimson
         숫자 26은 "&"의 UTF 코드
          --%> 
-         
-         
+          
     </main>
 </body>
 </html>

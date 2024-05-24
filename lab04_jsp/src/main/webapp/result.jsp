@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>JSTL</title>
+    <meta charset="UTF-8">
+    <title>JSTL</title>
 </head>
 <body>
     <%@ include file="header.jspf" %>
@@ -19,6 +19,7 @@
         <%-- JSTL의 조건문 --%>
         <c:choose>
             <c:when test="${ param.username eq 'admin' }"> <%-- 조건식을 "test"로 설정 --%> <%-- if --%>
+            <%-- "<c:when>"은 첫 번째 조건만 우선적으로 검사함. --%>
                 <h3>관리자 페이지</h3>
             </c:when>
             <c:when test="${ param.username eq 'guest' }"> <%-- else if --%>
@@ -29,7 +30,9 @@
             </c:otherwise>
         </c:choose>
         
+         <%-- EL 비교 연산자: eq(==), ne(!=) --%>
         <c:if test="${ param.username eq 'admin' }"> <%-- ${ param.username == 'admin' } --%>
+        <%-- "<c:if>"은 모든 "<c:if>" 태그의 조건을 검사함. --%>
             <h3>Admin Page</h3>
         </c:if>
         <c:if test="${ param.username ne 'admin' }"> <%-- ${ param.username != 'admin' } --%>

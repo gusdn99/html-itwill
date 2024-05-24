@@ -11,6 +11,7 @@
     <header>
        <h1>Contents</h1>
        <h2><%= LocalDateTime.now() %></h2> <!-- expression은 아규먼트라서 세미콜론(;) 안씀 -->
+       <h3>Hello, ${ nickname }!</h3>
     </header>
     
     <main>
@@ -50,6 +51,12 @@
             </li>
             <li>
                 <a href="mvc">MVC</a>
+            </li>
+            <li>
+                <a href="cookie">Cookie</a>
+            </li>
+            <li>
+                <a href="session">Session</a>
             </li>
         </ul>
     </main>

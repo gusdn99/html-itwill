@@ -2,7 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %> <%-- jstl 사용하려면 적어야 함. --%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %> <%-- jstl 사용하려면 적어야 함. --%> <%-- .core, .fmt를 많이 사용함 --%>
 <!DOCTYPE html>
 <html>
 <head>

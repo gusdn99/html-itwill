@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %-5p [%-40.40logger] %m%n" /> <!-- 닫는 태그 필요 X. 대/소문자 구분 O -->
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="com.zaxxer.hikari" level="info" additivity="false">
+            <AppenderRef ref="console" /> <!-- 닫는 태그 필요 X -->
+        </Logger>
+        <Root level="debug" additivity="false">
+            <AppenderRef ref="console" />
+        </Root>
+    </Loggers>
+</Configuration>

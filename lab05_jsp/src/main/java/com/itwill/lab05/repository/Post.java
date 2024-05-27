@@ -94,7 +94,7 @@ public class Post {
 		
 		public PostBuilder id(Integer id) { // 아규먼트를 전달받아서 내부 클래스의 필드에 저장.
 			this.id = id;
-			return this; // 메서드를(id(), title()...) 연쇄적으로 호출하기 위해서
+			return this; // PostBuilder 객체를 리턴. 메서드를(id(), title()...) 연쇄적으로 호출하기 위해서
 		}
 		
 		public PostBuilder title(String title) { // 아규먼트를 전달받아서 내부 클래스의 필드에 저장.

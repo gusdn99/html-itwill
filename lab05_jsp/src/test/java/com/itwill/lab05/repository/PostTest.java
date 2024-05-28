@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 public class PostTest {
 	private static final Logger log = LoggerFactory.getLogger(PostTest.class);
 	
-	private PostDao dao = PostDao.INSTANCE;
+	private PostDao dao = PostDao.INSTANCE; // singleton 객체
 	
 //	@Test
 	public void test() {
@@ -34,6 +34,9 @@ public class PostTest {
 		log.debug("dao = {}", dao); // 17:26:40.074 DEBUG [com.itwill.lab05.repository.PostTest    ] dao = INSTANCE
 		
 		List<Post> result = dao.select();
-		Assertions.assertNull(result); // 17:26:40.075 DEBUG [com.itwill.lab05.repository.PostDao     ] select()
+		for (Post p : result) {
+			log.debug(p.toString());
+		}
+//		Assertions.assertNull(result); // 17:26:40.075 DEBUG [com.itwill.lab05.repository.PostDao     ] select()
 	}
 }

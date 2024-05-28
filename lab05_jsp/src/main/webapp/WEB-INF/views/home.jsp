@@ -15,7 +15,7 @@
 <body>
     <div class="container-fluid">
     <c:set var="pageTitle" value="Home" scope="page" /> <%-- pageContext.setAttribute("pageTitle", "Home"); --%>
-    <%-- 끝나는 태그 필요 X. --%> 
+    <%-- 끝나는 태그 필요 X. --%>
     <%-- "Home" 제목이 나옴. scope에서 기본값은 "page" --%>
         <%@ include file="./fragments/header.jspf" %> <%-- "./"(점 1개)은 같은 경로 --%>
     </div>

@@ -31,6 +31,7 @@ public class PostTest {
 //	@Test
 	public void testSelect() {
         // PostDao.select 메서드 단위 테스트
+		
 		Assertions.assertNotNull(dao); // PostDao 타입 객체가 null이 아니면 단위 테스트 성공.
 		log.debug("dao = {}", dao); // 17:26:40.074 DEBUG [com.itwill.lab05.repository.PostTest    ] dao = INSTANCE
 		

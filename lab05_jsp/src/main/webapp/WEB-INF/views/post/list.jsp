@@ -14,8 +14,8 @@
 </head>
 <body>
     <div class="container-fluid">
-        <c:set var="pageTitle" value="Post 목록" scope="page" /> <%-- "Post 목록" 버튼 --%>
-        <%@ include file="../fragments/header.jspf" %>
+        <c:set var="pageTitle" value="Post 목록" scope="page" /> <%-- "Post 목록" 제목이 나옴. --%>
+        <%@ include file="../fragments/header.jspf" %> <%-- "../"(점 2개)은 상위 경로 --%>
         
         <main>
             <div class="card mt-2"> <%-- card도 bootstrap의 일종 --%>

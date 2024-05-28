@@ -23,7 +23,7 @@ public class CharacterEncodingFilter extends HttpFilter{
 	public void init(FilterConfig filterConfig) throws ServletException {
 		// web.xml에서 <filter>의 <param-name> 값을 아규먼트로 전달하면,
 		// <filter>의 <param-value> 값을 리턴해줌.
-		encoding = filterConfig.getInitParameter("encoding"); // web.xml의 <param-name>을 적음. <param-value> 리턴.
+		encoding = filterConfig.getInitParameter("encoding"); // web.xml의 <param-name> 값을(encoding) 아규먼트에 적음. <param-value> 값이(UTF-8) 리턴됨.
 		log.debug("init: encoding = {}",encoding); // 17:27:38.974 DEBUG [ill.lab05.filter.CharacterEncodingFilter] init: encoding = UTF-8
 	}
 	

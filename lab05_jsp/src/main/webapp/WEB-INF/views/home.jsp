@@ -14,9 +14,10 @@
 </head>
 <body>
     <div class="container-fluid">
-    <c:set var="pageTitle" value="Home" scope="page" /> <%-- 끝나는 태그 필요 X. "Home" 버튼. scope에서 기본값은 "page"--%>
-     <%-- pageContext.setAttribute("pageTitle", "Home"); --%>
-        <%@ include file="./fragments/header.jspf" %>
+    <c:set var="pageTitle" value="Home" scope="page" /> <%-- pageContext.setAttribute("pageTitle", "Home"); --%>
+    <%-- 끝나는 태그 필요 X. --%> 
+    <%-- "Home" 제목이 나옴. scope에서 기본값은 "page" --%>
+        <%@ include file="./fragments/header.jspf" %> <%-- "./"(점 1개)은 같은 경로 --%>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

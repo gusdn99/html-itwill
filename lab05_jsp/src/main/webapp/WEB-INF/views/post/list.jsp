@@ -18,26 +18,28 @@
         <%@ include file="../fragments/header.jspf" %>
         
         <main>
-            <table>
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Modified Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach items="${ posts }" var="p">
+            <div>
+                <table>
+                    <thead>
                         <tr>
-                            <td>${ p.id }</td> <%-- EL은 프로퍼티 이름으로 getter 메서드를 찾음. --%>
-                            <td>${ p.title }</td>
-                            <td>${ p.author }</td>
-                            <td>${ p.modifiedTime }</td>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성자</th>
+                            <th>수정 시간</th>
                         </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${ posts }" var="p">
+                            <tr>
+                                <td>${ p.id }</td> <%-- EL은 프로퍼티 이름으로 getter 메서드를 찾음. --%>
+                                <td>${ p.title }</td>
+                                <td>${ p.author }</td>
+                                <td>${ p.modifiedTime }</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+              </table>
+            </div>
         </main>
     </div>
     

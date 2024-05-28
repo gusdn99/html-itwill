@@ -18,27 +18,32 @@
         <%@ include file="../fragments/header.jspf" %>
         
         <main>
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>번호</th>
-                            <th>제목</th>
-                            <th>작성자</th>
-                            <th>수정 시간</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach items="${ posts }" var="p">
+            <div class="card mt-2"> <%-- card도 bootstrap의 일종 --%>
+                <div class="card-header text-center">
+                    <h2>POSTS</h2>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-hover">
+                        <thead>
                             <tr>
-                                <td>${ p.id }</td> <%-- EL은 프로퍼티 이름으로 getter 메서드를 찾음. --%>
-                                <td>${ p.title }</td>
-                                <td>${ p.author }</td>
-                                <td>${ p.modifiedTime }</td>
+                                <th>번호</th>
+                                <th>제목</th>
+                                <th>작성자</th>
+                                <th>수정 시간</th>
                             </tr>
-                        </c:forEach>
-                    </tbody>
-              </table>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${ posts }" var="p">
+                                <tr>
+                                    <td>${ p.id }</td> <%-- EL은 프로퍼티 이름으로 getter 메서드를 찾음. --%>
+                                    <td>${ p.title }</td>
+                                    <td>${ p.author }</td>
+                                    <td>${ p.modifiedTime }</td>
+                                </tr>
+                            </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </main>
     </div>

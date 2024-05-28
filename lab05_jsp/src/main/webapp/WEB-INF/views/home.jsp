@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container-fluid">
-    <c:set var="pageTitle" value="Home" scope="page" /> <%-- 끝나는 태그 필요 X --%>
+    <c:set var="pageTitle" value="Home" scope="page" /> <%-- 끝나는 태그 필요 X. Home 버튼 --%>
      <%-- pageContext.setAttribute("pageTitle", "Home"); --%>
         <%@ include file="./fragments/header.jspf" %>
     </div>

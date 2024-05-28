@@ -67,7 +67,7 @@ public class PostTest {
 		
 	}
 	
-//	@Test
+	@Test
 	public void testSelectById() {
 		// PostDao.select(int id) 메서드 단위 테스트
 		Post post = dao.select(3); // id(PK)가 테이블에 있을 때
@@ -77,17 +77,6 @@ public class PostTest {
 		post = dao.select(0); // id(PK)가 테이블에 없을 때
 		Assertions.assertNull(post);
 	}
-	
-	@Test
-	public void testUpdate() {
-		Post post = Post.builder()
-				.title(null)
-				.content(null)
-				.author(null)
-				.build();
-		
-		int result = dao.update(post);
-		
-	}
+
 	
 }

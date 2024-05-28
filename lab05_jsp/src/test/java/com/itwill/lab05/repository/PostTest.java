@@ -80,7 +80,13 @@ public class PostTest {
 	
 	@Test
 	public void testUpdate() {
+		Post post = Post.builder()
+				.title(null)
+				.content(null)
+				.author(null)
+				.build();
 		
+		int result = dao.update(post);
 		
 	}
 	

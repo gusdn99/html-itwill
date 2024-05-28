@@ -55,13 +55,27 @@ public class PostTest {
 		log.debug("insert = {}", String.valueOf(result));
 	}
 	
-	@Test
+//	@Test
 	public void testDelete() {
-		// 
-		int result = dao.delete(4);
+		// PostDao.delete 메서드 단위 테스트
+		int result = dao.delete(4); // id(PK)가 있을 때
 		Assertions.assertEquals(1, result); // delete 메서드의 리턴 값(삭제된 행의 개수)이 1이면 단위 테스트 성공.
 		log.debug("delete = {}", String.valueOf(result));
 		
+		result = dao.delete(10); // id(PK)가 없을 때
+		Assertions.assertEquals(0, result);
+		
+	}
+	
+	@Test
+	public void testSelectById() {
+		// PostDao.select(int id) 메서드 단위 테스트
+		Post post = dao.select(3); // id(PK)가 테이블에 있을 때
+		Assertions.assertNotNull(post);
+		log.debug("selectById = {}", post.toString());
+		
+		post = dao.select(0); // id(PK)가 테이블에 없을 때
+		Assertions.assertNull(post);
 	}
 	
 }

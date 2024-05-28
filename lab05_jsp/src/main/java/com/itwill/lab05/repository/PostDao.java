@@ -80,11 +80,11 @@ public enum PostDao {
 		return result;
 	}
 	
-	// TODO: posts 테이블에서 id(K)로 행 1개를 삭제하는 SQL:
+	// posts 테이블에서 id(PK)로 행 1개를 삭제하는 SQL:
 	private static final String SQL_DELETE = "delete from posts where id = ?";
 	
 	public int delete(int id) {
-		log.debug("delete({})", id);
+		log.debug("delete(id = {})", id);
 		log.debug(SQL_DELETE);
 		
 		Connection conn = null;
@@ -104,6 +104,36 @@ public enum PostDao {
 		
 		return result;
 	}
+	
+	// posts 테이블에서 id(PK)로 검색하는 SQL:
+	private static final String SQL_SELECT_BY_ID = "select * from posts where id = ?";
+	
+	public Post select(int id) {
+		log.debug("select(id = {})", id);
+		log.debug(SQL_SELECT_BY_ID);
+		
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Post post = null;
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(SQL_SELECT_BY_ID);
+			stmt.setInt(1, id);
+			rs = stmt.executeQuery();
+			
+			if(rs.next()) {
+				post = fromResultSetToPost(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeResources(conn, stmt, rs);
+		}
+		
+		return post;
+	}
+	
 	
 	private Post fromResultSetToPost(ResultSet rs) throws SQLException {
 		int id = rs.getInt("id");

@@ -37,6 +37,5 @@ public class PostTest {
 		for (Post p : result) {
 			log.debug(p.toString());
 		}
-//		Assertions.assertNull(result); // 17:26:40.075 DEBUG [com.itwill.lab05.repository.PostDao     ] select()
 	}
 }

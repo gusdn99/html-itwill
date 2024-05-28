@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <c:set var="pageTitle" value="Post 목록" scope="page" /> <%-- scope에서 기본값은 "page" --%>
+        <c:set var="pageTitle" value="Post 목록" scope="page" /> <%-- "Post 목록" 버튼 --%>
         <%@ include file="../fragments/header.jspf" %>
         
         <main>

@@ -34,6 +34,8 @@ public class PostTest {
 		log.debug("dao = {}", dao); // 17:26:40.074 DEBUG [com.itwill.lab05.repository.PostTest    ] dao = INSTANCE
 		
 		List<Post> result = dao.select();
+		Assertions.assertEquals(3, result.size());
+		// result.size(): 데이터베이스의 행의 개수. expected 값과 actual 값이 같으면 단위 테스트 성공, 다르면 실패.
 		for (Post p : result) {
 			log.debug(p.toString());
 		}

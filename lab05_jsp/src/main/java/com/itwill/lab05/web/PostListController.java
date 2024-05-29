@@ -27,7 +27,7 @@ public class PostListController extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		log.debug("doGet()");
 		
-		// TODO: DB posts 테이블에서 전체 검색을 하고, 그 결과를 뷰에 전달.
+		// DB posts 테이블에서 전체 검색을 하고, 그 결과를 뷰에 전달.
 		List<Post> list = postService.read();
 		req.setAttribute("posts", list);
 		

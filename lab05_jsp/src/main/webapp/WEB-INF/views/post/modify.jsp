@@ -14,13 +14,13 @@
 </head>
 <body>
     <div class="container-fluid">
-        <c:set var="pageTitle" value="Post Details" /> <%-- scope의 기본값은 page --%> <%-- "pageTitle"의 값을 "Post Details"으로 설정(헤더에 "Post Details" 제목이 나오게 하기 위해서) --%>
+        <c:set var="pageTitle" value="Post Modify" /> <%-- scope의 기본값은 page --%> <%-- "pageTitle"의 값을 "Post Modify"로 설정(헤더에 "Post Modify" 제목이 나오게 하기 위해서) --%>
         <%@ include file="../fragments/header.jspf" %>
         
         <main>
             <div class="mt-2 card">
                 <div class="card-header">
-                    <h2>포스트 상세보기</h2>
+                    <h2>포스트 수정 페이지</h2>
                 </div>
                 <div class="card-body">
                     <form>
@@ -30,32 +30,21 @@
                         </div>
                         <div class="mt-2">
                             <label for="title" class="form-label">제목</label>
-                            <input id="title" class="form-control" type="text" value="${ post.title }" readonly />
+                            <input id="title" class="form-control" type="text" value="${ post.title }" />
                         </div>
                         <div class="mt-2">
                             <label for="content" class="form-label">내용</label>
-                            <textarea id="content" class="form-control" rows="5" readonly>${ post.content }</textarea>
+                            <textarea id="content" class="form-control" rows="5" >${ post.content }</textarea>
                         </div>
                         <div class="mt-2">
                             <label for="author" class="form-label">작성자</label>
                             <input id="author" class="form-control" type="text" value="${ post.author }" readonly />
                         </div>
-                        <div class="mt-2">
-                            <label for="createdTime" class="form-label">작성 시간</label>
-                            <input id="createdTime" class="form-control" type="text" value="${ post.createdTime }" readonly />
-                        </div>
-                        <div class="mt-2">
-                            <label for="modifiedTime" class="form-label">최종 수정 시간</label>
-                            <input id="modifiedTime" class="form-control" type="text" value="${ post.modifiedTime }" readonly />
-                        </div>
                     </form>
                 </div>
                 <div class="card-footer">
-                    <c:url var="postModifyPage" value="/post/modify">
-                        <c:param name="id" value="${ post.id }" />
-                    </c:url>
-                    <a class="btn btn-outline-primary"
-                    href="${ postModifyPage }">수정하기</a>
+                    <button id="btnDelete" class="btn btn-outline-danger">삭제</button>
+                    <button id="btnUpdate" class="btn btn-outline-success">업데이트</button>
                 </div>
             </div>
         </main>

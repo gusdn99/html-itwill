@@ -46,16 +46,15 @@ public class PostCreateController extends HttpServlet {
 				.build();
 		log.debug("post = {}", post);
 		
-		// TODO: 서비스 객체의 메서드를 호출해서 DB 저장.
+		// 서비스 객체의 메서드를 호출해서 DB 저장.
 		postService.create(post);
 		
 		// 포스트 목록 페이지로 이동.
 		String url = req.getContextPath() + "/post/list"; // ContextPath: "/lab05"
 		log.debug("redirect: " + url);
-		resp.sendRedirect(url);
+		resp.sendRedirect(url); // 이 서블릿에는 Post의 목록과 setAttribute가 없으므로 forward하면 안 됨.
 		// PRG 패턴
 		
-		// 이 서블릿에는 Post의 목록과 setAttribute가 없으므로 forward하면 안 됨. 
 //		resp.sendRedirect("/lab05/post/list");
 //		resp.sendRedirect("/WEB-INF/views/post/list.jsp");
 	}

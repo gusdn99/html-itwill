@@ -39,7 +39,7 @@ public enum PostService {
 		return result; // insert된 행의 개수를 리턴.
 	}
 	
-	// 상세 보기
+	// 포스트 상세 보기
 	public Post read(int id) {
 		log.debug("read(id= {}", id);
 		
@@ -49,5 +49,15 @@ public enum PostService {
 		
 		return post; // 컨트롤러에게 검색한 Post 객체를 리턴.
 	}
+	
+	// 포스트 수정 페이지
+//	public int update(Post post) {
+//		log.debug("update(post = {})", post);
+//		
+//		int result = postDao.update(post);
+//		log.debug("update result = {}", result);
+//		
+//		return result;
+//	}
 
 }

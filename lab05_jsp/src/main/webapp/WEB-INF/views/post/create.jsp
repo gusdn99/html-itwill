@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="contatiner-fluid">
-        <c:set var="pageTitle" value="New Post" scope="page" />
+        <c:set var="pageTitle" value="New Post" scope="page" /> <%-- "pageTitle"의 값을 "New Post"로 설정(헤더에 "New Post" 제목이 나오게 하기 위해서) --%>
         <%@ include file="../fragments/header.jspf" %>
         
          <main>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="card-body">
                     <c:url var="newPostPage" value="/post/create" />
-                    <form method="post" action="${ newPostPage }">
+                    <form method="post" action="${ newPostPage }"> <%-- var의 이름을 el로 적음. --%>
                         <div class="mt-2">
                             <input class="form-control"
                                 type="text" name="title" placeholder="제목" required autofocus />

@@ -51,12 +51,14 @@ public class PostCreateController extends HttpServlet {
 		
 		// 포스트 목록 페이지로 이동.
 		String url = req.getContextPath() + "/post/list"; // ContextPath: "/lab05"
+		// resp.sendRedirect("/lab05/post/list")보다 안전함.
 		log.debug("redirect: " + url);
 		resp.sendRedirect(url); // 이 서블릿에는 Post의 목록과 setAttribute가 없으므로 forward하면 안 됨.
 		// PRG 패턴
 		
-//		resp.sendRedirect("/lab05/post/list");
 //		resp.sendRedirect("/WEB-INF/views/post/list.jsp");
+//		sendRedirect 메서드는 클라이언트(브라우저)가 접근 가능한 URL로 리다이렉트해야 하는데,
+//		"/WEB-INF/views/post/list.jsp"는 내부 경로라서 클라이언트(브라우저)가 접근할 수 없기 때문.
 	}
 	
 	

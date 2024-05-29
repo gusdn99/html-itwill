@@ -37,5 +37,10 @@ public enum PostService {
 		
 		return result; // insert된 행의 개수를 리턴.
 	}
+	
+//	public Post read(int id) {
+//		Post post = postDao.select(id);
+//		return post;
+//	}
 
 }

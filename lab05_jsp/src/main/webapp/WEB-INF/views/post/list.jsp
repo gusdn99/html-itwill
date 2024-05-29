@@ -36,7 +36,12 @@
                             <c:forEach items="${ posts }" var="p">
                                 <tr>
                                     <td>${ p.id }</td> <%-- EL은 프로퍼티 이름으로 getter 메서드를 찾음. --%>
-                                    <td>${ p.title }</td>
+                                    <td>
+                                        <c:url var="postDetailsPage" value="/post/details">
+                                            <c:param name="id" value="${ p.id }"></c:param>
+                                        </c:url>
+                                        <a href="${ postDetailsPage}">${ p.title }</a>
+                                    </td>
                                     <td>${ p.author }</td>
                                     <td>${ p.modifiedTime }</td>
                                 </tr>

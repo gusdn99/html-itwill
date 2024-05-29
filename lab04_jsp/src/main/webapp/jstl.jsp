@@ -93,9 +93,8 @@
                     </tr>
                 </c:forEach>
             </tbody>
-         
          </table>
-         
+               
          <h2>URL 태그</h2>
          <a href="result.jsp?username=gu&est&color=crimson">클릭1</a> <%-- 안녕하세요, gu! --%>
          

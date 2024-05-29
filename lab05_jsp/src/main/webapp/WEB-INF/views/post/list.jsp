@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container-fluid">
-        <c:set var="pageTitle" value="Post 목록" scope="page" /> <%-- <%-- "pageTitle"의 값을 "Post 목록"으로 설정(헤더에 "Post 목록" 제목이 나오게 하기 위해서) --%>
+        <c:set var="pageTitle" value="Post 목록" scope="page" /> <%-- "pageTitle"의 값을 "Post 목록"으로 설정(헤더에 "Post 목록" 제목이 나오게 하기 위해서) --%>
         <%@ include file="../fragments/header.jspf" %> <%-- "../"(점 2개)은 상위 경로 --%>
         
         <main>

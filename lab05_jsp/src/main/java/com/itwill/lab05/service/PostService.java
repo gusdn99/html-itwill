@@ -1,6 +1,5 @@
 package com.itwill.lab05.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -22,7 +21,21 @@ public enum PostService {
 	
 	// 전체 목록
 	public List<Post> read() {
-		return postDao.select();
+		log.debug("read()");
+		List<Post> list = postDao.select();
+		log.debug("list size = {}", list.size());
+		
+		return list;
+	}
+	
+	public int create(Post post) {
+		log.debug("create(post = {})", post);
+		
+		// Repository 계층의 메서드를 사용해서 DB 테이블에 행을 삽입(insert)
+		int result = postDao.insert(post);
+		log.debug("insert result = {}", result);
+		
+		return result; // insert된 행의 개수를 리턴.
 	}
 
 }

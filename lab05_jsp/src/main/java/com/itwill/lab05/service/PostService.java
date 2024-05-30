@@ -61,13 +61,13 @@ public enum PostService {
 	}
 	
 	// 포스트 수정 페이지
-	public int update(Post post) {
-		log.debug("update(post = {})", post);
-		
-		int result = postDao.update(post);
-		log.debug("update result = {}", result);
-		
-		return result;
-	}
+//	public int update(Post post) {
+//		log.debug("update(post = {})", post);
+//		
+//		int result = postDao.update(post);
+//		log.debug("update result = {}", result);
+//		
+//		return result;
+//	}
 
 }

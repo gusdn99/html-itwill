@@ -24,16 +24,17 @@ public class PostDeleteController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		log.debug("doGet()");
 		
-		// 질의 문자열(query string)에 포함된 요청 파라미터 id 값을 읽음.
+		// 쿼리 문자열(query string)에 포함된 요청 파라미터 id 값을 읽음.
 		int id = Integer.parseInt(req.getParameter("id"));
 		log.debug("id= {}", id);
 		
-		// 서비스 계층의 메서드를 호출해서 해당 id의 Post 정보를 DB에서 삭제.
+		// 서비스 계층의 메서드를 호출해서 글 삭제 서비스를 실행.
 		postService.delete(id);
-		
+			
+		// 목록 페이지로 이동(redirect)
 		String url = req.getContextPath() + "/post/list";
 		log.debug("redirect: " + url);
 		resp.sendRedirect(url);
 	}
-	
+			
 }

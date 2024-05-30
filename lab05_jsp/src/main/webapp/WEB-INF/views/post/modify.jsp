@@ -44,17 +44,8 @@
                 </div>
                 <div class="card-footer">
                     <button id="btnDelete" class="btn btn-outline-danger">삭제</button>
-     
-                    <c:url var="postUpdatePage" value="/post/update">
-                        <c:param name="id" value="${ post.id }" />
-                         <form method="post" action="${ postUpdatePage }"></form>
-                    </c:url>
-                    <a href="${ postUpdatePage }">
-                        <button id="btnUpdate" class="btn btn-outline-success">업데이트</button>
-                    </a>
-                    <c:url var="newPostPage" value="/post/create" />
-                   
-                </div>     
+                    <button id="btnUpdate" class="btn btn-outline-success">업데이트</button>
+                </div>                  
             </div>
         </main>
     </div>

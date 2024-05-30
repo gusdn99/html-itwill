@@ -50,14 +50,24 @@ public enum PostService {
 		return post; // 컨트롤러에게 검색한 Post 객체를 리턴.
 	}
 	
+	// 포스트 삭제
+	public int delete(int id) {
+		log.debug("delete(id = {})", id);
+		
+		int result = postDao.delete(id);
+		log.debug("delete result = {}", result);
+		
+		return result;
+	}
+	
 	// 포스트 수정 페이지
-//	public int update(Post post) {
-//		log.debug("update(post = {})", post);
-//		
-//		int result = postDao.update(post);
-//		log.debug("update result = {}", result);
-//		
-//		return result;
-//	}
+	public int update(Post post) {
+		log.debug("update(post = {})", post);
+		
+		int result = postDao.update(post);
+		log.debug("update result = {}", result);
+		
+		return result;
+	}
 
 }

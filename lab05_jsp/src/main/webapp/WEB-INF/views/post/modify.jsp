@@ -23,7 +23,7 @@
                     <h2>포스트 수정 페이지</h2>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form id="modifyForm">
                         <div class="mt-2">
                             <label for="id" class="form-label">번호</label>
                             <input id="id" class="form-control" type="text" value="${ post.id }" readonly /> <%-- readonly: 편집 못하게 막음. --%>
@@ -44,8 +44,17 @@
                 </div>
                 <div class="card-footer">
                     <button id="btnDelete" class="btn btn-outline-danger">삭제</button>
-                    <button id="btnUpdate" class="btn btn-outline-success">업데이트</button>
-                </div>
+     
+                    <c:url var="postUpdatePage" value="/post/update">
+                        <c:param name="id" value="${ post.id }" />
+                         <form method="post" action="${ postUpdatePage }"></form>
+                    </c:url>
+                    <a href="${ postUpdatePage }">
+                        <button id="btnUpdate" class="btn btn-outline-success">업데이트</button>
+                    </a>
+                    <c:url var="newPostPage" value="/post/create" />
+                   
+                </div>     
             </div>
         </main>
     </div>
@@ -53,5 +62,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    
+    <c:url var="post_modify_js" value="/js/post_modify.js"/> <%-- <c:url> 태그는 context root(lab05)를 가리킴. 맨 앞의 "/"를 "webapp"으로 간주 --%>
+    <script src="${ post_modify_js }"></script>    <%-- "/lab05/js/post_modify.js" --%>
+    
 </body>
 </html>

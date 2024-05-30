@@ -52,7 +52,7 @@ public class PostCreateController extends HttpServlet {
 		// 포스트 목록 페이지로 이동.
 		String url = req.getContextPath() + "/post/list"; // ContextPath: "/lab05"
 		// resp.sendRedirect("/lab05/post/list")보다 안전함.
-		log.debug("redirect: " + url);
+		log.debug("redirect: {}" + url);
 		resp.sendRedirect(url); // 이 서블릿에는 Post의 목록과 setAttribute가 없으므로 forward하면 안 됨.
 		// PRG 패턴
 		

@@ -34,7 +34,6 @@ public class PostUpdateController extends HttpServlet {
 		log.debug("title = {}", title);
 		log.debug("content = {}", content);
 			
-		// 서비스 계층의 메서드를 호출해서 해당 id의 Post 정보를 DB에서 읽음.
 		Post post = Post.builder()
 				.id(id)
 				.title(title)

@@ -23,7 +23,7 @@
                     <h2>포스트 수정 페이지</h2>
                 </div>
                 <div class="card-body">
-                    <form id="modifyForm">
+                    <form id="modifyForm"> <%-- 자바스크립트에서 method와 action을 설정하기 위해 --%>
                         <div class="mt-2">
                             <label for="id" class="form-label">번호</label>
                             <input id="id" class="form-control" type="text" name="id" value="${ post.id }" readonly /> <%-- readonly: 편집 못하게 막음. --%>
@@ -36,7 +36,7 @@
                             <label for="content" class="form-label">내용</label>
                             <textarea id="content" class="form-control" name="content" rows="5" >${ post.content }</textarea>
                         </div>
-                        <div class="mt-2 d-none">
+                        <div class="mt-2 d-none"> <%-- "display-none" 화면에 안 보임. --%>
                             <label for="author" class="form-label">작성자</label>
                             <input id="author" class="form-control" type="text" value="${ post.author }" readonly />
                         </div>

@@ -26,29 +26,29 @@
                 <div class="card-body">  
                     <form id="SignUpForm">
                         <div class="mt-2">
-                            <input class="form-control"
+                            <input id="userid" class="form-control"
                                 type="text" name="userid" placeholder="아이디" required autofocus />
-                            <button id="btnCheckDuplicateId" class="mt-2">중복 확인</button>
+                            <button id="btnCheckDuplicateUserId" class="mt-2" type="button" >중복 확인</button>
                         </div>
                         <div class="mt-2">
-                            <input class="form-control"
+                            <input id="password" class="form-control"
                                 type="password" name="password" placeholder="비밀번호" required />
                         </div>
                         <div class="mt-2">
-                            <input class="form-control"
+                            <input id="email" class="form-control"
                                 type="email" name="email" placeholder="이메일" required />
-                            <button id="btnCheckDuplicateEmail" class="mt-2">중복 확인</button>
-                        </div>
-                        <div class="card-footer mt-2 d-grid gap-2">
-                            <button id="btnSignUp" class="btn btn-outline-success" type="button">회원가입</button>
-                            <button id="btnCancel" class="btn btn-outline-secondary" type="button">취소</button>
+                            <button id="btnCheckDuplicateEmail" class="mt-2" type="button">중복 확인</button>
                         </div>
                     </form>
                 </div>
+                <div class="card-footer d-grid gap-2">
+                    <button id="btnSignUp" class="btn btn-outline-success" >회원가입</button>
+                    <button id="btnCancel" class="btn btn-outline-secondary" >취소</button>
+                </div>
             </div>
         </main>
-        
     </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

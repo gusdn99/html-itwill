@@ -21,26 +21,27 @@
         <main>
             <div class="mt-2 card">
                 <div class="card-header">
-                    <h2>회원 가입</h2>
+                    <h2>로그인</h2>
                 </div>
                 <div class="card-body">
                     <form id="SignInForm">
                         <div class="mt-2">
-                            <input class="form-control"
+                            <input id="userid" class="form-control"
                                 type="text" name="userid" placeholder="아이디" required autofocus />
                         </div>
                         <div class="mt-2">
-                            <input class="form-control"
+                            <input id="password" class="form-control"
                                 type="password" name="password" placeholder="비밀번호" required />
-                        </div>
-                        <div class="card-footer mt-2 d-grid gap-2">
-                            <button id="btnSignIn" class="btn btn-outline-success" type="button">로그인</button>
-                            <button id="btnCancel" class="btn btn-outline-secondary" type="button">취소</button>
                         </div>
                     </form>
                 </div>
+                <div class="card-footer d-grid gap-2">
+                    <button id="btnSignIn" class="btn btn-outline-success" >로그인</button>
+                    <button id="btnCancel" class="btn btn-outline-secondary" >취소</button>
+                </div>
             </div>
         </main>
+    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

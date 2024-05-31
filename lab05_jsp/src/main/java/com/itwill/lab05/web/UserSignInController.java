@@ -23,7 +23,6 @@ public class UserSignInController extends HttpServlet {
 	
 	private final UserService userService = UserService.INSTANCE;
 	
-	// TODO: 로그인에 필요한 요청 처리 메서드.
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		log.debug("doGet()");

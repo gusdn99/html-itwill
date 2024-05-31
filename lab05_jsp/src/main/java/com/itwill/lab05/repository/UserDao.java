@@ -83,10 +83,10 @@ public enum UserDao {
 
 	/**
 	 * 로그인할 때 필요한 메서드.
+	 * 
 	 * @param user 로그인을 시도한 userid, password를 저장한 객체.
-	 * @return 데이터베이스의 users 테이블에서
-	 * userid와 password가 일치하는 레코드가 있으면 null이 아닌 User 타입 객체를 리턴.
-	 * userid 또는 password가 일치하지 않으면 null을 리턴.
+	 * @return 데이터베이스의 users 테이블에서 userid와 password가 일치하는 레코드가 있으면 null이 아닌 User 타입
+	 *         객체를 리턴. userid 또는 password가 일치하지 않으면 null을 리턴.
 	 */
 	public User selectByUseridAndPassword(User user) {
 		log.debug("selectByUseridAndPassword({})", user);
@@ -107,11 +107,36 @@ public enum UserDao {
 			if (rs.next()) {
 				result = fromResultSetToUser(rs);
 			}
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeResources(conn, stmt, rs);
+		}
+
+		return result;
+	}
+
+	private static final String SQL_DELETE = "delete from users where id = ?";
+
+	public int delete(int id) {
+		log.debug("delete(id = {})", id);
+		log.debug(SQL_DELETE);
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		int result = 0;
+		try {
+			conn = ds.getConnection();
+			stmt = conn.prepareStatement(SQL_DELETE);
+
+			stmt.setInt(1, id);
+			result = stmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeResources(conn, stmt);
+			
 		}
 
 		return result;

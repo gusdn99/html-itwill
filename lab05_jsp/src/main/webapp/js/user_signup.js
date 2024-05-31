@@ -5,8 +5,6 @@
 // HTML DOM(Document Object Model) 컨텐트 로딩이 끝났을 때, 이벤트 리스너를 실행.
 document.addEventListener('DOMContentLoaded', () => {
 
-    const SignUpForm = document.querySelector('form#SignUpForm');
-
     const inputUserid = document.querySelector('input#userid');
     const btnCheckDuplicateUserId = document.querySelector('button#btnCheckDuplicateUserId');
 

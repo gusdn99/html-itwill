@@ -65,7 +65,7 @@ public class User {
 				+ points + "]";
 	}
 
-	// TODO: builder 패턴
+	// builder 패턴
 	public static UserBuilder builder() {
 		return new UserBuilder();
 	}

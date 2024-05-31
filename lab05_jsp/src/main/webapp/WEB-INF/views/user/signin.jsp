@@ -56,8 +56,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-    <c:url var="user_signin_js" value="/js/user_signin.js" />
+    <%-- <c:url var="user_signin_js" value="/js/user_signin.js" />
     <script src="${ user_signin_js }"></script>
+    --%>
 
 </body>
 </html>

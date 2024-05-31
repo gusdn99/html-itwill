@@ -13,6 +13,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 @WebServlet(name = "userSignInController", urlPatterns = { "/user/signin" })
 public class UserSignInController extends HttpServlet {
@@ -34,24 +35,33 @@ public class UserSignInController extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		log.debug("doPost()");
 
-		// 로그인 폼에서 제출된 userid, password, email 요청 파라미터 값을 읽음.
+		// 로그인 화면에서 사용자가 입력(전송)한 userid, password 값을 읽음.
 		String userid = req.getParameter("userid");
 		String password = req.getParameter("password");
-
-		User user = User.builder()
-				.userid(userid)
-				.password(password)
-				.build();
 		
-		log.debug("user = {}", user);
-
-		// 서비스 계층의 메서드를 호출해서 로그인.
-		userService.signIn(userid, password);
-
-		// 홈페이지로 이동(redirect)
-        String url = req.getContextPath() + "/";
-		log.debug("redirect: {}" + url);
-		resp.sendRedirect(url); 
+		// 서비스 계층의 메서드를 호출해서 로그인 성공 여부를 판단.
+		User user = userService.signIn(userid, password);
+		
+		if (user != null) { // 데이터베이스 users 테이블에서 일치하는 사용자 정보가 있는 경우
+			// 세션에 로그인 정보를 저장.
+			HttpSession session = req.getSession();
+			session.setAttribute("signedInUser", user.getUserid());
+			
+			// FIXME: 타겟 목적지(URL)로 이동.
+			// 홈페이지로 이동.
+			String target = req.getContextPath() + "/";
+			log.debug("redirect: {}" + target);
+			resp.sendRedirect(target);
+			
+		} else { // 데이터베이스 users 테이블에서 일치하는 사용자 정보가 있지 X
+			// 다시 로그인 페이지로 이동
+			 String url = req.getContextPath() + "/user/signin"; // FIXME
+			 log.debug("redirect: {}" + url);
+			 resp.sendRedirect(url);
+		}
+       
+		
+		
 	}
 	
 

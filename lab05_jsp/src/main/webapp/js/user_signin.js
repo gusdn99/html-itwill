@@ -13,7 +13,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const inputPassword = document.querySelector('input#password');
 
+    const inputSignIn = document.querySelector('input#SignIn');
+    
     const btnCancel = document.querySelector('button#btnCancel');
+    
+    inputSignIn.addEventListener('click', () => {
+        userId = inputUserid.value;
+        password = inputPassword.value;
+        
+    });
 
     btnCancel.addEventListener('click', () => {
         location.href = `/lab05/`;

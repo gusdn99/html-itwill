@@ -36,14 +36,14 @@ public enum UserService {
 		return result;
 	}
 
-	
-	public User signIn(User user) {
-		log.debug("signIn(user= {}", user);
+	public User signIn(String userid, String password) {
+		log.debug("signIn(userid = {}, passowrd = {})", userid, password);
 		
-		User result = userDao.selectByUseridAndPassword(user);
-		log.debug("signIn result = {}", result);
+		User dto = User.builder().userid(userid).password(password).build();
+		User user = userDao.selectByUseridAndPassword(dto);
+		log.debug("로그인 결과 = {}", user);
 		
-		return result;
+		return user;
 	}
 
 }

@@ -33,11 +33,6 @@
             <c:url var="signUpPage" value="/user/signup" /> <%-- "singUpPage" 버튼 --%> <%-- "signUpPage"의 URL --%>
           <a class="nav-link" href="${ signUpPage }">회원가입</a>
         </li>
-        <li class="nav-item">
-            <!-- TODO: User List url 작성 -->
-            <c:url var="userListPage" value="/user/list" /> <%-- "userListPage" 버튼 --%> <%-- "userListPage"의 URL --%>
-          <a class="nav-link" href="${ userListPage }">User List</a>
-        </li>
       </ul>
     </div>
   </div>

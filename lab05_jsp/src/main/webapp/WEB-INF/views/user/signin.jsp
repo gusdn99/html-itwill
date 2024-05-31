@@ -24,7 +24,8 @@
                     <h2>로그인</h2>
                 </div>
                 <div class="card-body">
-                    <form id="SignInForm">
+                <c:url var="signInPage" value="/user/signin" />           
+                    <form method="post" action="${signInPage}">
                         <div class="mt-2">
                             <input id="userid" class="form-control"
                                 type="text" name="userid" placeholder="아이디" required autofocus />
@@ -33,11 +34,12 @@
                             <input id="password" class="form-control"
                                 type="password" name="password" placeholder="비밀번호" required />
                         </div>
+                        <div class="card-footer d-grid gap-2">
+                            <input type="submit" class="btn btn-outline-success" 
+                                value="로그인" />
+                            <button id="btnCancel" class="btn btn-outline-secondary" type="button" >취소</button>
+                        </div>                
                     </form>
-                </div>
-                <div class="card-footer d-grid gap-2">
-                    <button id="btnSignIn" class="btn btn-outline-success" >로그인</button>
-                    <button id="btnCancel" class="btn btn-outline-secondary" >취소</button>
                 </div>
             </div>
         </main>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.itwill.lab05.repository.Post;
 import com.itwill.lab05.repository.User;
 import com.itwill.lab05.repository.UserDao;
 
@@ -32,6 +33,16 @@ public enum UserService {
 		int result = userDao.insert(user);
 		log.debug("insert result = {}", result);
 
+		return result;
+	}
+
+	
+	public User signIn(User user) {
+		log.debug("signIn(user= {}", user);
+		
+		User result = userDao.selectByUseridAndPassword(user);
+		log.debug("signIn result = {}", result);
+		
 		return result;
 	}
 

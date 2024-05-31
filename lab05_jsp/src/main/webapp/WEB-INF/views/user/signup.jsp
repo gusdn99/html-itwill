@@ -23,8 +23,9 @@
                 <div class="card-header">
                     <h2>회원 가입</h2>
                 </div>
-                <div class="card-body">  
-                    <form id="SignUpForm">
+                <div class="card-body"> 
+                <c:url var="signUpPage" value="/user/signup" />           
+                    <form method="post" action="${signUpPage}">
                         <div class="mt-2">
                             <input id="userid" class="form-control"
                                 type="text" name="userid" placeholder="아이디" required autofocus />

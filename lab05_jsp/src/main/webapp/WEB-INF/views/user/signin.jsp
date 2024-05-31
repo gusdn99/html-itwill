@@ -59,6 +59,12 @@
     <c:url var="user_signin_js" value="/js/user_signin.js" />
     <script src="${ user_signin_js }"></script>
     
+    <c:if test="${not empty errorMessage}">
+        <script>
+            alert('${errorMessage}');
+        </script>
+    </c:if>
+    
 
 </body>
 </html>

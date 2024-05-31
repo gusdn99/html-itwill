@@ -5,8 +5,6 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.itwill.lab05.service.UserService;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,7 +18,6 @@ public class UserSignOutController extends HttpServlet {
 	
 	private static final Logger log = LoggerFactory.getLogger(UserSignOutController.class);
 	
-	private final UserService userService = UserService.INSTANCE;
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

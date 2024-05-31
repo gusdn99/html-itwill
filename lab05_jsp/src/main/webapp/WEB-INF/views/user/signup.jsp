@@ -13,7 +13,7 @@
         crossorigin="anonymous" />
 </head>
 <body>
-    <!-- TODO: 회원 가입 양식(form) -->
+    <!-- 회원 가입 양식(form) -->
     <div class="contatiner-fluid">
         <c:set var="pageTitle" value="회원가입" scope="page" />
         <%@ include file="../fragments/header.jspf" %>
@@ -39,11 +39,12 @@
                                 type="email" name="email" placeholder="이메일" required />
                             <button id="btnCheckDuplicateEmail" class="mt-2" type="button">중복 확인</button>
                         </div>
+                        <div class="card-footer d-grid gap-2">
+                            <input type="submit" class="btn btn-outline-success" 
+                                value="회원가입" />
+                            <button id="btnCancel" class="btn btn-outline-secondary" type="button" >취소</button>
+                        </div>
                     </form>
-                </div>
-                <div class="card-footer d-grid gap-2">
-                    <button id="btnSignUp" class="btn btn-outline-success" >회원가입</button>
-                    <button id="btnCancel" class="btn btn-outline-secondary" >취소</button>
                 </div>
             </div>
         </main>

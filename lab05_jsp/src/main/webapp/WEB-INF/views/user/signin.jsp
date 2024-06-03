@@ -37,6 +37,9 @@
                                 type="password" name="password"
                                 placeholder="비밀번호" required />
                         </div>
+                        <div class="d-none">
+                            <input name="target" value="${ param.target }" readonly />
+                        </div>
                         <div class="card-footer d-grid gap-2">
                             <input id="inputSignIn" type="submit"
                                 class="btn btn-outline-success"

@@ -23,10 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("아이디를 입력하세요!");
             return;
         }
-        
+
         // 중복 확인 로직 구현 (예: AJAX 요청)
         fetch(`/check-duplicate-userid?userid=${encodeURIComponent(userid)}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.exists) {
                     alert("이미 사용중인 아이디입니다.");
@@ -50,7 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 중복 확인 로직 구현 (예: AJAX 요청)
         fetch(`/check-duplicate-email?email=${encodeURIComponent(email)}`)
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok: ${response.statusText}`);
+                }
+                return response.json();
+            })
             .then(data => {
                 if (data.exists) {
                     alert("이미 사용중인 이메일입니다.");
@@ -62,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.error("Error checking duplicate email:", error);
                 alert("이메일 중복 확인 중 오류가 발생했습니다.");
             });
-        
+
 
     });
 

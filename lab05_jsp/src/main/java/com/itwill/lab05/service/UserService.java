@@ -5,7 +5,6 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.itwill.lab05.repository.Post;
 import com.itwill.lab05.repository.User;
 import com.itwill.lab05.repository.UserDao;
 

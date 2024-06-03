@@ -1,6 +1,7 @@
 package com.itwill.lab05.web;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,11 +62,9 @@ public class UserSignInController extends HttpServlet {
 
 		} else { // 데이터베이스 users 테이블에서 일치하는 사용자 정보가 있지 X
 			// 다시 로그인 페이지로 이동
-			req.setAttribute("errorMessage", "비밀번호가 일치하지 않습니다.");
-			req.getRequestDispatcher("/WEB-INF/views/user/signin.jsp").forward(req, resp);
-//			String url = req.getContextPath() + "/user/signin"; // FIXME
-//			log.debug("redirect: {}" + url);
-//			resp.sendRedirect(url);
+			String url = req.getContextPath() + "/user/signin?result=f&target=" + URLEncoder.encode(target, "UTF-8");
+			log.debug("redirect: {}" + url);
+			resp.sendRedirect(url);
 		}
 
 	}

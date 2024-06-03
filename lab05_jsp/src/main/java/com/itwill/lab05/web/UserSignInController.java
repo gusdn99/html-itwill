@@ -51,7 +51,7 @@ public class UserSignInController extends HttpServlet {
 			HttpSession session = req.getSession(); // 메모리에 있는 세션 객체를 찾음. 세션은 heap 메모리에 있음.
 			session.setAttribute("signedInUser", user.getUserid());
 
-			// FIXME: 타겟 목적지(URL)로 이동.
+			// 타겟 목적지(URL)로 이동.
 			if (target == null || target.equals("")) {
 				String url = req.getContextPath() + "/"; // 홈페이지로 이동.
 				log.debug("redirect: {}" + url);

@@ -23,7 +23,6 @@
                     <c:if test="${not empty param.result && param.result eq 'f'}">
                         <div class="text-danger">아이디와 패스워드를 확인하세요.</div>
                     </c:if>
-                    
                     <c:url var="signInPage" value="/user/signin" />
                     <form method="post" action="${signInPage}">
                         <div class="mt-2">

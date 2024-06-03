@@ -133,6 +133,8 @@ public enum PostDao {
 		
 		return post;
 	}
+	
+	
 	// posts 테이블에서 id(PK)로 수정하는 SQL:
 	private static final String SQL_UPDATE = "update posts set title = ?, content = ?, modified_time = systimestamp " + 
 	"where id = ? ";

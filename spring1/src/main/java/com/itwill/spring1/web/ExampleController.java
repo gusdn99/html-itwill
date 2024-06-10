@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.itwill.spring1.dto.UserDto;
 
@@ -33,7 +34,7 @@ public class ExampleController {
 		log.debug("home()");
 		
 		LocalDateTime now = LocalDateTime.now();
-		model.addAttribute("now", now); // requset.setAttribute(name, object)와 비슷한 기능.
+		model.addAttribute("now", now); // request.setAttribute(name, object)와 비슷한 기능.
 		// Model 객체는 컨트롤러에서 뷰로 데이터를 전달할 때 사용.
 		
 		
@@ -103,6 +104,26 @@ public class ExampleController {
 		return "redirect:/test"; // http://localhost:8080/spring1/test
 		// 컨트롤러 메서드가 "redirect:"으로 시작하는 문자열을 리턴 -> 리다이렉트 이동.
 		// 리다이렉트 방식의 페이지 이동 - 최초 요청 주소가 리다이렉트되는 주소로 바뀜!
+	}
+	
+	@GetMapping("/rest1")
+	@ResponseBody // jsp 파일 찾는 거 X (서버에서 클라이언트로 직접 응답됨.)
+	// -> 컨트롤러 메서드가 리턴하는 값이 뷰를 찾기 위한 문자열이 아니라,
+	// 클라이언트로 직접 응답되는 데이터. 응답 패킷(response packet)의 몸통(body)에 포함되는 데이터.
+	public String rest1() {
+		log.debug("rest1()");
+		
+		return "Hello. 안녕하세요!"; // 클라이언트로 직접 응답됨.
+	}
+	
+	@GetMapping("/rest2")
+	@ResponseBody // -> 리턴 값이 클라이언트로 직접 응답되는 객체.
+	public UserDto rest2() {
+		log.debug("rest2()");
+		
+		return UserDto.builder().username("홍길동").age(16).build(); // {"username":"홍길동","age":16}
+		// -> REST 컨트롤러(ResponseBody)가 리턴한 자바 객체를 jackson-databind 라이브러리에서
+		// JSON(JavaScript Object Notation) 형식의 문자열로 변환하고, 클라이언트로 응답을 보냄.
 	}
 
 

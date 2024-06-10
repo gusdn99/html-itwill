@@ -29,8 +29,8 @@ public class DataSourceTest {
 	 * 스프링 프레임워크: 모델2 MVC(위임 패턴) 아키텍쳐를 제공하고, 의존성 주입을 제공하는 프레임워크.
 	 */
 			
-	@Autowired // 스프링 컨테이너가 생성, 관리하는 빈(bean)을 변수에 자동 할당(주입).
-	// DataSourceTest 객체는 빈으로 설정된 HikariDataSource 객체가 필요하다고 스프링 컨테이너에게 알려줌.
+	@Autowired 	// 스프링 컨테이너(application-context.xml)가 생성, 관리하는 빈(bean)을 변수에 자동 할당(주입).
+				// DataSourceTest 클래스는 빈으로 설정된 HikariDataSource 객체가 필요하다고 스프링 컨테이너에게 알려줌.
 	private HikariDataSource ds;
 	
 	@Autowired

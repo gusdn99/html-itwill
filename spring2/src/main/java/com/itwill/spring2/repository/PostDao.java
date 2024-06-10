@@ -8,3 +8,4 @@ public interface PostDao {
 	List<Post> selectOrderByIdDesc();
 
 }
+

@@ -20,4 +20,6 @@ public class Post {
 	private String author;
 	private LocalDateTime createdTime; // 컬럼 이름에는 밑줄(underscore)이 사용됨. 필드 이름에는 camel case가 사용됨.
 	private LocalDateTime modifiedTime;
+	
 }
+

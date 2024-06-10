@@ -73,8 +73,7 @@
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit-version}</version>
-            <scope>test</scope> <!-- 단위 프로젝트를 사용하기 위해 태그 작성("test" 폴더에서 사용하기 위해)
-            ("main" 폴더 X) -->
+            <scope>test</scope> <!-- 단위 프로젝트를 사용하기 위해 태그 작성("test" 폴더에서 사용하기 위해. "main" 폴더 X) -->
         </dependency>
         <!-- Module "junit-jupiter-api" of JUnit 5. -->
         <dependency>
@@ -129,8 +128,7 @@
             <version>${spring-version}</version>
         </dependency>
 
-        <!-- General data-binding functionality for Jackson: works on core
-        streaming API -->
+        <!-- General data-binding functionality for Jackson: works on core streaming API -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
@@ -173,7 +171,6 @@
             <artifactId>mybatis-spring</artifactId>
             <version>${mybatis-spring-version}</version>
         </dependency>
-
     </dependencies>
 
     <!-- 빌드 툴(플러그인) 설정 -->

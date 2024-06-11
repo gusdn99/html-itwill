@@ -20,7 +20,7 @@
     <!-- HikariDataSource 빈 생성을 위한 설정 -->
     <!-- ds = new HikariDataSource(hikariConfig); -->
     <bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
-        <constructor-arg ref="hikariConfig" /> <!-- ref(참조값): 변수 이름 -->
+        <constructor-arg ref="hikariConfig" /> <!-- ref(참조값) - HikariConfig 빈의 id를 적음. (HikariConfig 객체를 참조하여 데이터 소스를 설정.) -->
     </bean>
     
     <!-- SqlSessionFactoryBean 생성을 위한 설정:
@@ -35,7 +35,14 @@
     <!-- MyBatis-Spring 프레임워크에서 생성하고 관리하는 bean을 설정:
         base-package와 그 하위 패키지에 있는 인터페이스들을 구현한 객체를 생성해줌.
      -->
-    <mybatis:scan base-package="com.itwill.spring2.repository" />
+    <mybatis:scan base-package="com.itwill.spring2.repository" /> <!-- 패키지 안에 인터페이스를 만들어야 함. -->
+    
+    <!-- 스프링 컨테이너에서 컴포넌트 빈들을 검색할 기본 패키지를 설정.
+        스프링 컨테이너가 설정된 패키지와 그 하위 패키지를 검색해서
+        컴포넌트 애너테이션(예: @Service, @Component, ...)이 선언된 클래스의 객체를 생성/관리.
+        필요한 곳에 의존성을 주입해줌.
+    -->
+    <context:component-scan base-package="com.itwill.spring2.service" />
     
     
 </beans>

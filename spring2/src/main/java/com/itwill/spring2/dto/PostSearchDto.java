@@ -1,5 +1,7 @@
 package com.itwill.spring2.dto;
 
+import java.time.LocalDateTime;
+
 import com.itwill.spring2.repository.Post;
 
 import lombok.AllArgsConstructor;
@@ -14,13 +16,19 @@ import lombok.NoArgsConstructor;
 public class PostSearchDto {
 	private String category;
 	private String keyword;
+	private Integer id;
+	private String title;
+	private String author;
+	private LocalDateTime modifiedTime;
 	
-//	public static PostSearchDto fromEntity(Post post) {
-//        return PostSearchDto.builder()
-//                .category("")
-//                .keyword(post.getTitle() + " " + post.getContent() + " " + post.getAuthor())
-//                .build();
-//    }
+	public static PostSearchDto fromEntity(Post post) {
+        return PostSearchDto.builder()
+				.id(post.getId())
+				.title(post.getTitle())
+				.author(post.getAuthor())
+				.modifiedTime(post.getModifiedTime())
+                .build();
+    }
 
 //	private String title;
 //    private String content;

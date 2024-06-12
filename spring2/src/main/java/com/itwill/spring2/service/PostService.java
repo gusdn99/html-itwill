@@ -81,20 +81,19 @@ public class PostService {
 		return result;
 	}
 	
-	public List<Post> search(PostSearchDto dto){
-		log.debug("search(dto = {})", dto);
-		return postDao.search(dto);
-	}
+//	public List<Post> search(PostSearchDto dto){
+//		log.debug("search(dto = {})", dto);
+//		return postDao.search(dto);
+//	}
 	
-//    public List<PostSearchDto> search(PostSearchDto dto) {
-//    	log.debug("search(dto = {})", dto);
-//        List<Post> list = postDao.search(dto);
-//        return list.stream()
-//                .map(PostSearchDto::fromEntity)
-//                .toList();
-//    }
-	
-	
+    public List<PostSearchDto> search(PostSearchDto dto) {
+    	log.debug("search(dto = {})", dto);
+    	
+        List<Post> list = postDao.search(dto);
+        return list.stream()
+                .map(PostSearchDto::fromEntity)
+                .toList();
+    }
 	
 
 }

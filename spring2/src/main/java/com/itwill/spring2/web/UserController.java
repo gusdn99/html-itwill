@@ -57,6 +57,24 @@ public class UserController {
 		model.addAttribute("user", user);
 	}
 	
+//	@Override
+//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//		log.debug("doGet()");
+//		
+//		// 로그아웃:
+//		// (1) 세션에 저장된 signedInUser(로그인 정보)를 삭제
+//		// (2) 세션 객체를 무효화(invalidate) - 세션 삭제
+//		// (2)만 실행하면 (1)은 자동으로 실행됨.
+//		
+//		HttpSession session = req.getSession();
+//		session.removeAttribute("signedInUser"); // removeAttribute의 아규먼트: setAttribute에서 사용한 속성 이름.
+//		session.invalidate(); // (2)
+//		
+//		// 로그아웃 이후에 로그인 페이지로 이동
+//		String url = req.getContextPath() + "/user/signin";
+//		resp.sendRedirect(url);
+//	}
+	
 
 }
 

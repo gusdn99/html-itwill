@@ -45,25 +45,25 @@ public class AuthenticationFilter extends HttpFilter {
 
 		String reqUrl = req.getRequestURL().toString();
 		log.debug("request URL = {}", reqUrl);
-		// request URL = http://localhost:8080/lab05/post/create
-		// request URL = http://localhost:8080/lab05/post/details
+		// request URL =
+		// request URL = 
 		// => 프로토콜부터 시작. 쿼리 스트링 보여주지 X
 
 		String contextPath = req.getContextPath();
 		log.debug("context path(root) = {}", contextPath);
-		// context path(root) = /lab05
-		// context path(root) = /lab05
+		// context path(root) =
+		// context path(root) =
 
 		String reqUri = req.getRequestURI();
 		log.debug("request URI = {}", reqUri);
-		// request URI = /lab05/post/create
-		// request URI = /lab05/post/details
+		// request URI =
+		// request URI =
 		// => 컨텍스트 루트부터 시작. 쿼리 스트링 보여주지 X
 
 		String qs = req.getQueryString();
 		log.debug("query string = {}", qs);
-		// query string = null
-		// query string = id=24
+		// query string =
+		// query string =
 
 		String target = ""; // 로그인 성공했을 때 이동(redirect)할 요청 주소
 		if (qs == null) {
@@ -72,8 +72,8 @@ public class AuthenticationFilter extends HttpFilter {
 			target = URLEncoder.encode(reqUrl + "?" + qs, "UTF-8");
 		}
 		log.debug("target = {}", target);
-		// target = http%3A%2F%2Flocalhost%3A8080%2Flab05%2Fpost%2Fcreate(쿼리 스트링 X)
-		// target = http%3A%2F%2Flocalhost%3A8080%2Flab05%2Fpost%2Fdetails%3Fid%3D24(쿼리 스트링 O)
+		// target = 
+		// target = 
 
 		// 세션에 로그인 정보(signedInUser)가 있는지를 체크:
 		HttpSession session = req.getSession();
@@ -84,8 +84,8 @@ public class AuthenticationFilter extends HttpFilter {
 			String url = req.getContextPath() + "/user/signin?target=" + target;
 			((HttpServletResponse) response).sendRedirect(url); // 다형성
 
-			// => http://localhost:8080/lab05/user/signin?target=http%3A%2F%2Flocalhost%3A8080%2Flab05%2Fpost%2Fcreate(쿼리 스트링 X)
-			// => http://localhost:8080/lab05/user/signin?target=http%3A%2F%2Flocalhost%3A8080%2Flab05%2Fpost%2Fdetails%3Fid%3D24(쿼리 스트링 O)
+			// => 
+			// =>
 
 		} else { // 로그인 상태 O
 			log.debug("로그인 상태: {}", signedInUser); // 로그인 상태: meme

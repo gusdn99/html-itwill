@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,35 +18,6 @@ public enum UserDao {
 
 	private static final Logger log = LoggerFactory.getLogger(UserDao.class);
 	private final HikariDataSource ds = DataSourceUtil.getInstance().getDataSource();
-
-	// select() 메서드에서 실행할 SQL:
-	private static final String SQL_SELECT_ALL = "select * from users order by id desc";
-
-	public List<User> select() {
-		log.debug("select()");
-		log.debug(SQL_SELECT_ALL);
-
-		List<User> list = new ArrayList<>();
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		try {
-			conn = ds.getConnection();
-			stmt = conn.prepareStatement(SQL_SELECT_ALL);
-			rs = stmt.executeQuery();
-
-			while (rs.next()) {
-				User user = fromResultSetToUser(rs);
-				list.add(user);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeResources(conn, stmt, rs);
-		}
-
-		return list;
-	}
 
 	// users 테이블에 insert하는 SQL:
 	private static final String SQL_INSERT = "insert into users (userid, password, email) values (?, ?, ?)";
@@ -112,31 +81,6 @@ public enum UserDao {
 			e.printStackTrace();
 		} finally {
 			closeResources(conn, stmt, rs);
-		}
-
-		return result;
-	}
-
-	private static final String SQL_DELETE = "delete from users where id = ?";
-
-	public int delete(int id) {
-		log.debug("delete(id = {})", id);
-		log.debug(SQL_DELETE);
-
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		int result = 0;
-		try {
-			conn = ds.getConnection();
-			stmt = conn.prepareStatement(SQL_DELETE);
-
-			stmt.setInt(1, id);
-			result = stmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			closeResources(conn, stmt);
-
 		}
 
 		return result;

@@ -1,7 +1,5 @@
 package com.itwill.lab05.service;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,15 +13,6 @@ public enum UserService {
 	private static final Logger log = LoggerFactory.getLogger(UserService.class);
 
 	private final UserDao userDao = UserDao.INSTANCE;
-
-	// 전체 목록
-	public List<User> read() {
-		log.debug("read()");
-		List<User> list = userDao.select();
-		log.debug("list size = {}", list.size());
-
-		return list;
-	}
 
 	// 회원 가입에 필요한 메서드. userDao.insert() 호출.
 	public int signUp(User user) {

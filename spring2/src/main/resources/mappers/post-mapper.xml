@@ -36,7 +36,7 @@
     <!-- posts 테이블에서 제목/내용/작성자로 검색. -->
     <select id="search" resultType="Post">
         <!-- 동적 쿼리 -->
-        <bind name="searchKeyword" value="'%' + keyword + '%'" /> <!-- name은 변수이름 --> <!-- dto.getKeyword() -->
+        <bind name="searchKeyword" value="'%' + keyword + '%'" /> <!-- name은 변수이름 --> <!-- dto.getKeyword -->
         select * from posts
         <where>
             <choose>

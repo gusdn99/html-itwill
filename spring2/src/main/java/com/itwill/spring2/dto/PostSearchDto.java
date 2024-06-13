@@ -30,17 +30,6 @@ public class PostSearchDto {
                 .build();
     }
 
-//	private String title;
-//    private String content;
-//    private String author;
-//    
-//    public static PostSearchDto fromEntity(Post post) {
-//        return PostSearchDto.builder()
-//                .title(post.getTitle())
-//                .content(post.getContent())
-//                .author(post.getAuthor())
-//                .build();
-//    }
 
 }
 

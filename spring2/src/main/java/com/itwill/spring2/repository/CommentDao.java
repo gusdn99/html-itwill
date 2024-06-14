@@ -27,7 +27,5 @@ public interface CommentDao {
 	Comment selectById(Integer id);
 	
 	
-	
-
 }
 

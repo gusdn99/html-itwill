@@ -23,7 +23,7 @@ public class CommentService {
 	private final CommentDao commentDao; // 생성자에 의한 의존성 주입
 	
 	public List<CommentItemDto> readByPostId(Integer postId) {
-		log.debug("readByPostId(postId={})", postId);
+		log.debug("readByPostId(postId = {})", postId);
 		
 		// 리포지토리(영속성) 계층의 메서드를 호출해서 comments 테이블의 데이터를 검색.
 		List<Comment> list = commentDao.selectByPostId(postId);
@@ -44,8 +44,9 @@ public class CommentService {
 	public int create(CommentCreateDto dto) {
 		log.debug("create({})", dto);
 		
+		// 리포지토리 계층의 메서드를 호출해서 comments 테이블에 insert.
 		int result = commentDao.insert(dto.toEntity());
-		log.debug("insert 결과 = {}", result);
+		log.debug("create 결과 = {}", result);
 		
 		return result;
 	}
@@ -53,6 +54,7 @@ public class CommentService {
 	public int update(CommentUpdateDto dto) {
 		log.debug("update({})", dto);
 		
+		// 리포지토리 컴포넌트의 메서드를 호출해서 comments 테이블을 업데이트.
 		int result = commentDao.update(dto.toEntity());
 		log.debug("update 결과 = {}", result);
 		
@@ -62,10 +64,21 @@ public class CommentService {
 	public int deleteById(Integer id) {
 		log.debug("deleteById(id = {})", id);
 		
+		// 리포지토리 컴포넌트의 메서드를 호출해서 comments에서 댓글 1개를 삭제.
 		int result = commentDao.deleteById(id);
-		log.debug("deleteById 결과 = {}", result);
 		
 		return result;
+		
+	}
+	
+	public CommentItemDto readById(Integer id) {
+		log.debug("readById(id={})", id);
+	        
+		// 리포지ㅣ토리 컴포넌트의 메서드를 호출해서 해당 아이디의 댓글 1개를 검색.
+		Comment comment = commentDao.selectById(id);
+		
+		// Comment 타입을 CommentItemDto 타입으로 변환해서 리턴.
+		return CommentItemDto.fromEntity(comment);
 		
 	}
 	
@@ -78,36 +91,7 @@ public class CommentService {
 		return result;
 		
 	}
-	
-	public Comment readById(Integer id) {
-		log.debug("readById(id = {})", id);
-		return commentDao.selectById(id);
-		
-	}
-	
-//	public Post readById(Integer id) {
-//		log.debug("readById(id = {})", id);
-//		return postDao.selectById(id);
-//	}
-//
-//	
-//    public List<PostListDto> search(PostSearchDto dto) {
-//    	log.debug("search({})", dto);
-//    	
-//        List<Post> list = postDao.search(dto);
-//        return list.stream()
-//                .map(PostListDto::fromEntity)
-//                .toList();
-//    }
-	
-//    public CommentListDto readById(Integer id) {
-//        log.debug("readById(id={})", id);
-//        
-//        Comment comment = commentDao.selectById(id);
-//        log.debug(comment.toString());
-//        
-//        return CommentListDto.fromEntity(comment);
-//    }
+  
 
 }
 

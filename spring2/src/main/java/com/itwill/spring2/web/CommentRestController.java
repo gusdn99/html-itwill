@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.itwill.spring2.dto.CommentCreateDto;
 import com.itwill.spring2.dto.CommentItemDto;
 import com.itwill.spring2.dto.CommentUpdateDto;
-import com.itwill.spring2.repository.Comment;
 import com.itwill.spring2.service.CommentService;
 
 import lombok.RequiredArgsConstructor;
@@ -91,6 +90,5 @@ public class CommentRestController {
    
     	return ResponseEntity.ok(result);
     }
-    
-    
+     
 }

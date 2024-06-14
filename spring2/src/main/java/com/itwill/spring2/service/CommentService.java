@@ -82,15 +82,15 @@ public class CommentService {
 		
 	}
 	
-	public int deleteByPostId(Integer postId) {
-		log.debug("deleteByPostId(postId = {})", postId);
-		
-		int result = commentDao.deleteByPostId(postId);
-		log.debug("deleteByPostId 결과 = {}", result);
-		
-		return result;
-		
-	}
+//	public int deleteByPostId(Integer postId) {
+//		log.debug("deleteByPostId(postId = {})", postId);
+//		
+//		int result = commentDao.deleteByPostId(postId);
+//		log.debug("deleteByPostId 결과 = {}", result);
+//		
+//		return result;
+//		
+//	}
   
 
 }

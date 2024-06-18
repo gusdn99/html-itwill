@@ -1,54 +1,63 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" trimDirectiveWhitespaces="true" %>
-<%@ taglib prefix="c" uri="jakarta.tags.core" %>
+    pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Spring Legacy 2</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
-        rel="stylesheet" 
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
-        crossorigin="anonymous" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spring Legacy 2</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous" />
 </head>
 <body>
     <div class="container-fluid">
+        <c:set var="pageTitle" value="회원 가입" />
+        <%@ include file="../fragments/header.jspf"%>
+        
         <main>
-            <div class="mt-2 card">
-                <div class="card-header">
-                    <h2>회원가입</h2>
-                </div>
-                <div class="card-body">
-                    <c:url var="signUpPage" value="/user/signup" />
-                    <form method="post" action="${signUpPage}">
-                        <div class="mt-2">
-                            <label for="userid" class="form-label">아이디</label>
-                            <input type="text" id="userid" class="form-control" 
-                                name="userid" required autofocus />
-                        </div>
-                        <div class="mt-2">
-                            <label for="password" class="form-label">비밀번호</label>
-                            <input type="password" id="password" class="form-control" 
-                                name="password" required />
-                        </div>
-                        <div class="mt-2">
-                            <label for="email" class="form-label">이메일</label>
-                            <input type="email" id="email" class="form-control" 
-                                name="email" required />
-                        </div>
-                        <div class="mt-2">
-                            <input type="submit" class="form-control btn btn-outline-success" 
-                                value="작성완료" />
-                        </div>
-                    </form>
-                </div>
+            <div class="my-2 card card-body">
+                <c:url var="signUpPage" value="/user/signup" />
+                <form action="${signUpPage}" method="post">
+                    <div class="my-2">
+                        <input type="text" class="form-control"
+                            id="userid" name="userid" placeholder="사용자 아이디" required autofocus />
+                    </div>
+
+                    <!-- userid 중복 체크 결과를 표시할 영역 -->
+                    <div id="checkUseridResult"></div>
+
+                    <div class="my-2">
+                        <input type="password" class="form-control"
+                            id="password" name="password" placeholder="비밀번호" required />
+                    </div>
+
+                    <div class="my-2">
+                        <input type="email" class="form-control"
+                            id="email" name="email" placeholder="이메일" required />
+                    </div>
+
+                    <div class="my-2">
+                        <button id="btnSignUp"
+                            class="form-control btn btn-outline-success disabled">작성 완료</button>
+                    </div>
+                </form>
             </div>
         </main>
-    </div>    
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+        
+    <!-- Axios JS 라이브러리 (JS파일보다 위에 있어야 함.) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+      
+    <!-- 우리가 만드는 JS 파일 -->
+    <c:url var="userSignUpJS" value="/js/user_signup.js" />
+    <script src="${userSignUpJS}"></script>
+        
 </body>
 </html>

@@ -76,7 +76,7 @@ public class CommentRestController {
     public ResponseEntity<Integer> updateComment(@PathVariable int id, @RequestBody CommentUpdateDto dto) {
     	log.debug("updateComment(id = {}, dto = {})", id, dto);
         
-        dto.setId(id);
+        dto.setId(id); // dto의 아이디를 채움.
     	
     	int result = commentService.update(dto);
     	return ResponseEntity.ok(result);

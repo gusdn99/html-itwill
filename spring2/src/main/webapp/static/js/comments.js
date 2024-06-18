@@ -25,6 +25,15 @@
     // 버튼 btnRegisterComment 요소를 찾음.
     const btnRegisterComment = document.querySelector('button#btnRegisterComment');
     
+    // 부트스트랩 모달(다이얼로그) 객체 생성.
+    const commentModal = new bootstrap.Modal('div#commentModal', {backdrop: true});
+    
+    // 모달의 저장 버튼을 찾고, 클릭 이벤트 리스너를 설정.
+    const btnUpdateComment = document.querySelector('button#btnUpdateComment');
+    btnUpdateComment.addEventListener('click', updateComment);
+    
+    /*----------------------------------------------------------------------------------*/
+    
     // 버튼에 클릭 이벤트 리스너를 등록.
     btnRegisterComment.addEventListener('click', registerComment); // 클릭 이벤트 처리를 하는 registerComment 함수를 만듦.
     
@@ -135,7 +144,11 @@
             
         }
         
-        // TODO: 모든 수정 버튼들을 찾아서 클릭 이벤트 리스너를 설정.
+        // 모든 수정 버튼들을 찾아서 클릭 이벤트 리스너를 설정.
+        const btnModies = document.querySelectorAll('button.btnModifyComment');
+        for (let btn of btnModies) {
+            btn.addEventListener('click', showCommentModal);
+        }
     }
     
     function deleteComment(event) {
@@ -165,6 +178,59 @@
         .catch((error) => {
             console.log(error);
         });
+    }
+    
+    function showCommentModal(event) {
+        // 이벤트 타겟(수정 버튼)의 data-id 속성 값을 읽음.
+        const id = event.target.getAttribute('data-id');
+        
+        // Ajax 요청을 보내서 댓글 아이디로 검색.
+        const uri = `../api/comment/${id}`;
+        axios
+        .get(uri)
+        .then((response) => {
+            console.log(response.data);
+            
+            // 모달의 input(댓글 번호), textarea(댓글 내용)의 value를 채움.        
+            document.querySelector('input#modalCommentId').value = id;
+            document.querySelector('textarea#modalCommentText').value = response.data.ctext;
+            
+            // 모달을 보여줌.
+            commentModal.show();
+ 
+        })
+        .catch((error) => console.log(error)); // 실행문이 하나일 때 중괄호 생략 가능함.
+    }
+    
+    // 댓글 업데이트 모달의 [저장] 버튼의 클릭 이벤트 리스너
+    function updateComment() {
+        // 업데이트할 댓글 번호
+        const id = document.querySelector('input#modalCommentId').value;
+        
+        // 업데이트할 댓글 내용
+        const ctext = document.querySelector('textarea#modalCommentText').value;
+        
+        if (ctext === '') {
+            alert('업데이트할 댓글 내용을 입력하세요.');
+            return; // 이벤트 리스너를 종료
+        }
+        
+        // 댓글 업데이트 요청 REST API URI
+        const uri = `../api/comment/${id}`;
+        
+        // Ajax 요청
+        axios
+        .put(uri, { ctext }) // { ctext } = {ctext: ctext} id는 CommentRestController에서 dto.setId(id);가 있어서 안 적음.
+        .then((response) => {
+            console.log(response);
+            if (response === 1) {
+                alert(`댓글(${id}) 업데이트 성공`);
+                getAllComments(); // 댓글 목록 갱신
+                commentModal.hide(); // 모달 숨김
+            }    
+        })
+        .catch((error) => console.log(error));
+        
     }
     
  });

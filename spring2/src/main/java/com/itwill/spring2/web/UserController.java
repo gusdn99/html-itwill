@@ -1,5 +1,8 @@
 package com.itwill.spring2.web;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +15,7 @@ import com.itwill.spring2.dto.UserSignupDto;
 import com.itwill.spring2.repository.User;
 import com.itwill.spring2.service.UserService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -23,9 +27,9 @@ public class UserController {
 
 	private final UserService userService;
 
-	@GetMapping("/signup")
+	@GetMapping("/signup") // GET 방식의 /user/signup 요청을 처리하는 컨트롤러 메서드
 	public void signup() {
-		log.debug("GET: signup()");
+		log.debug("GET signup()");
 	}
 
 	@PostMapping("/signup")
@@ -42,20 +46,28 @@ public class UserController {
 	}
 	
 	@PostMapping("/signin")
-	public String signin(UserSigninDto dto) {
+	public String signin(UserSigninDto dto, HttpSession session, @RequestParam(name = "target") String target) throws UnsupportedEncodingException {
 		log.debug("POST: signin(dto = {})", dto);
 		
-		userService.signin(dto);
-		return "redirect:/";
+		User user = userService.signin(dto);
+		if (user != null) {
+			session.setAttribute("signedInUser", user.getUserid());
+			
+			if (target == null || target.equals("")) {
+				return "redirect:/";
+			} else {
+				return "redirect" + target;
+			}
+		} else {
+			return "/user/signin?result=f&target=" + URLEncoder.encode(target, "UTF-8");
+						
+		}
+			
 	}
 	
-//	// 로그인 화면에서 사용자가 입력(전송)한 userid, password 값을 읽음. signin post방식
-//	String userid = req.getParameter("userid");
-//	String password = req.getParameter("password");
-//
-//	// 서비스 계층의 메서드를 호출해서 로그인 성공 여부를 판단.
-//	User user = userService.signIn(userid, password);
-//
+    // TODO: 사용자 아이디 중복체크 REST 컨트롤러
+	
+
 //	// 로그인 성공이면 타겟(target) 페이지, 그렇지 않으면 다시 로그인 페이지로 이동:
 //	String target = req.getParameter("target");
 //	log.debug("target = {}", target);
@@ -89,23 +101,15 @@ public class UserController {
 		model.addAttribute("user", user);
 	}
 	
-//	@Override signout
-//	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		log.debug("doGet()");
-//		
-//		// 로그아웃:
-//		// (1) 세션에 저장된 signedInUser(로그인 정보)를 삭제
-//		// (2) 세션 객체를 무효화(invalidate) - 세션 삭제
-//		// (2)만 실행하면 (1)은 자동으로 실행됨.
-//		
-//		HttpSession session = req.getSession();
-//		session.removeAttribute("signedInUser"); // removeAttribute의 아규먼트: setAttribute에서 사용한 속성 이름.
-//		session.invalidate(); // (2)
-//		
-//		// 로그아웃 이후에 로그인 페이지로 이동
-//		String url = req.getContextPath() + "/user/signin";
-//		resp.sendRedirect(url);
-//	}
+	@GetMapping("/signout")
+	public String signout(HttpSession session) {
+		log.debug("GET signout()");
+		
+		session.removeAttribute("signedInUser");
+		session.invalidate();
+		return "redirect:/user/signin";
+	}
+	
 	
 
 }

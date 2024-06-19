@@ -50,7 +50,8 @@
                         </div>
                     </form>
                 </div>
-                  
+                
+                <%--  
                 <div class="card-footer">
                     <c:url var="postModifyPage" value="/post/modify">
                         <c:param name="id" value="${post.id}" />
@@ -58,8 +59,8 @@
                     <a class="btn btn-outline-primary"
                         href="${postModifyPage}">수정하기</a>
                 </div>
+                --%>
                 
-                <%--
                 <c:if test="${ post.author eq signedInUser }">
                     <div class="card-footer">
                         <c:url var="postModifyPage" value="/post/modify">
@@ -69,7 +70,7 @@
                         href="${ postModifyPage }">수정하기</a>
                     </div>
                 </c:if>
-                --%>
+                
                 
             </div>
         </main>
@@ -142,4 +143,3 @@
     <script src="${ commentsJS }"></script>
 </body>
 </html>
-

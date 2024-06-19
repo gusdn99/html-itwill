@@ -67,7 +67,7 @@ public class PostService {
 		log.debug("delete(id = {})", id);
 		
 		// 리포지토리 컴포넌트의 메서드를 호출해서 delete 쿼리를 실행.
-		int result = commentDao.deleteById(id);
+		int result = commentDao.deleteByPostId(id);
 		result = postDao.deletePost(id);
 		log.debug("delete 결과 = {}", result);
 

@@ -41,7 +41,7 @@
 
                     <div class="my-2">
                         <button id="btnSignUp"
-                            class="form-control btn btn-outline-success disabled">작성 완료</button>
+                            class="form-control btn btn-outline-success disabled">회원 가입</button>
                     </div>
                 </form>
             </div>

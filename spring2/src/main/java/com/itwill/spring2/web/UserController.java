@@ -1,6 +1,8 @@
 package com.itwill.spring2.web;
 
-import java.io.UnsupportedEncodingException;
+import static com.itwill.spring2.filter.AuthenticationFilter.SESSION_ATTR_USER;
+
+import java.io.IOException;
 import java.net.URLEncoder;
 
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.itwill.spring2.dto.UserSigninDto;
+import com.itwill.spring2.dto.UserSignInDto;
 import com.itwill.spring2.dto.UserCreateDto;
 import com.itwill.spring2.repository.User;
 import com.itwill.spring2.service.UserService;
@@ -61,29 +63,42 @@ public class UserController {
 	}
 	
 	@GetMapping("/signin")
-	public void signin() {
-		log.debug("GET: signin()");
-	}
-	
-	@PostMapping("/signin")
-	public String signin(UserSigninDto dto, HttpSession session, @RequestParam(name = "target") String target) throws UnsupportedEncodingException {
-		log.debug("POST: signin(dto = {})", dto);
-		
-		User user = userService.signin(dto);
-		if (user != null) {
-			session.setAttribute("signedInUser", user.getUserid());
-			
-			if (target == null || target.equals("")) {
-				return "redirect:/";
-			} else {
-				return "redirect:" + target;
-			}
-		} else {
-			return "redirect:/user/signin?result=f&target=" + URLEncoder.encode(target, "UTF-8");
-						
-		}
-			
-	}
+    public void signIn() {
+        log.debug("GET signIn()");
+    }
+    
+    @PostMapping("/signin")
+    public String signIn(UserSignInDto dto, 
+            @RequestParam(name = "target", defaultValue = "") String target,
+            HttpSession session) throws IOException {
+        log.debug("POST signIn({})", dto);
+        
+        User user = userService.read(dto);
+        String targetPage = "";
+        if (user != null) { // 아이디와 비밀번호가 일치하는 사용자 있는 경우
+            // 세션에 로그인 사용자 아이디를 저장
+            session.setAttribute(SESSION_ATTR_USER, user.getUserid());
+            
+            // 로그인 성공 후 이동할 타겟 페이지
+            targetPage = (target.equals("")) ? "/" : target;
+            
+        } else { // 아이디와 비밀번호가 일치하는 사용자 없는 경우
+            targetPage = "/user/signin?result=f&target="
+                    + URLEncoder.encode(target, "UTF-8");
+        }
+        
+        return "redirect:" + targetPage;
+    }
+    
+    @GetMapping("/signout")
+    public String signOut(HttpSession session) {
+        log.debug("singOut()");
+        
+        session.removeAttribute(SESSION_ATTR_USER);
+        session.invalidate();
+        
+        return "redirect:/user/signin";
+    }
 	
 	@GetMapping("/profile")
 	public void profile(@RequestParam(name = "userid") String userid, Model model) {
@@ -93,15 +108,4 @@ public class UserController {
 		model.addAttribute("user", user);
 	}
 	
-	@GetMapping("/signout")
-	public String signout(HttpSession session) {
-		log.debug("GET signout()");
-		
-		session.removeAttribute("signedInUser");
-		session.invalidate();
-		return "redirect:/user/signin";
-	}
-	
-
 }
-

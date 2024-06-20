@@ -2,7 +2,7 @@ package com.itwill.spring2.service;
 
 import org.springframework.stereotype.Service;
 
-import com.itwill.spring2.dto.UserSigninDto;
+import com.itwill.spring2.dto.UserSignInDto;
 import com.itwill.spring2.dto.UserCreateDto;
 import com.itwill.spring2.repository.User;
 import com.itwill.spring2.repository.UserDao;
@@ -39,12 +39,14 @@ public class UserService {
 		return result;
 	}
 	
-	public User signin(UserSigninDto dto) {
-		log.debug("signin({})", dto);
-
-		return userDao.selectByUseridAndPassword(dto.toEntity());
-		
-	}
+    // 로그인 서비스
+    public User read(UserSignInDto dto) {
+        log.debug("read({})", dto);
+        
+        User user = userDao.selectByUseridAndPassword(dto.toEntity());
+        
+        return user;
+    }
 	
 	public User read(String userid) {
 		log.debug("read()");
@@ -54,4 +56,3 @@ public class UserService {
 	}
 
 }
-

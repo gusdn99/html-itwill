@@ -14,40 +14,33 @@
 </head>
 <body>
     <div class="container-fluid">
-        <c:set var="pageTitle" value="로그인" />
-        <%@ include file="../fragments/header.jspf"%>
-        
         <main>
-            <div class="my-2 card card-body">
-                <c:if test="${not empty param.result && param.result eq 'f'}">
-                     <div class="text-danger">아이디와 패스워드를 확인하세요.</div>
-                </c:if>
-                    
-                <c:url var="signInPage" value="/user/signin" />
-                <form method="post" action="${signInPage}">
-                    
-                    <div class="my-2">
-                        <input type="text" name="userid" placeholder="아이디" 
-                            class="form-control" required autofocus />
-                    </div>
-                        
-                    <div class="my-2">
-                        <input type="password" name="password" placeholder="비밀번호" 
-                            class="form-control" required />
-                    </div>
-                        
-                    <div class="d-none">
-                        <input name="target" value="${param.target}" readonly />
-                    </div>
-                        
-                    <div class="my-2">
-                        <input class="form-control btn btn-outline-success" 
-                            type="submit" value="로그인" />
-                    </div>        
-                </form>
+            <div class="my-2 card">
+                <div class="card-header text-center">
+                    <h2>로그인 페이지</h2>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        <c:if test="${not empty param.result and param.result eq 'f'}">
+                            <div class="text-danger">아이디와 비밀번호를 확인하세요.</div>
+                        </c:if>
+                        <div class="my-2">
+                            <input class="form-control" 
+                                type="text" name="userid" placeholder="아이디" required />
+                        </div>
+                        <div class="my-2">
+                            <input class="form-control" 
+                                type="password" name="password" placeholder="비밀번호" required />
+                        </div>
+                        <div class="my-2">
+                            <input class="form-control btn btn-outline-success" 
+                                type="submit" value="로그인" />
+                        </div>
+                    </form>
+                </div>
             </div>
         </main>
-    </div>
+    </div>    
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 

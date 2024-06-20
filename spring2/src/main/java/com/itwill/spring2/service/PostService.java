@@ -32,7 +32,7 @@ public class PostService {
 //	public PostService(PostDao postDao) {
 //		this.postDao = postDao;
 //	}
-	private final CommentDao commentDao;
+	private final CommentDao commentDao; // 생성자에 의한 의존성 주입
 	
 	public List<PostListDto> read() {
 		log.debug("read()");
@@ -67,8 +67,12 @@ public class PostService {
 		log.debug("delete(id = {})", id);
 		
 		// 리포지토리 컴포넌트의 메서드를 호출해서 delete 쿼리를 실행.
-		int result = commentDao.deleteByPostId(id);
-		result = postDao.deletePost(id);
+		// (1) 포스트에 달려 있는 모든 댓글들을 삭제:
+        int rows = commentDao.deleteByPostId(id);
+        log.debug("삭제된 댓글 개수 = {}", rows);
+        
+        // (2) 포스트를 삭제:
+        int result = postDao.deletePost(id);
 		log.debug("delete 결과 = {}", result);
 
 		return result;
@@ -93,6 +97,4 @@ public class PostService {
                 .toList();
     }
 	
-
 }
-

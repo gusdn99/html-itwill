@@ -5,8 +5,8 @@ import com.itwill.spring2.repository.User;
 import lombok.Data;
 
 @Data
-public class UserSigninDto {
-	
+public class UserSignInDto {
+
 	private String userid;
 	private String password;
 	

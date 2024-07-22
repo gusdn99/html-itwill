@@ -38,10 +38,10 @@ public class EmployeeController {
 	public String details(@PathVariable(name = "id") int id, Model model) {
 		log.info("details(id={})", id);
 		
-		Employee employee = empSvc.readById(id);
-		model.addAttribute("employee", employee);
+		Employee emp = empSvc.readById(id);
+		model.addAttribute("employee", emp);
 		
-		return "/employee/details";
+		return "employee/details";
 		
 	}
 }

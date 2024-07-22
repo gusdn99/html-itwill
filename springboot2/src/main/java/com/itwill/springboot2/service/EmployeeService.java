@@ -28,7 +28,8 @@ public class EmployeeService {
 	public Employee readById(Integer id) {
 		log.info("readById(id={})", id);
 		
-		return empRepo.findById(id).orElse(null);
+		return empRepo.findById(id).orElseThrow();
+//		return empRepo.findById(id).orElse(null);
 	}
 	
 }

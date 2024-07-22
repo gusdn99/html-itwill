@@ -38,10 +38,10 @@ public class DepartmentController {
 	public String details(@PathVariable(name = "id") int id, Model model) {
 		log.info("details(id={})", id);
 		
-		Department department = deptSvc.readById(id);
-		model.addAttribute("department", department);
+		Department dept = deptSvc.readById(id);
+		model.addAttribute("department", dept);
 		
-		return "/department/details";
+		return "department/details";
 		
 	}
 }

@@ -28,7 +28,8 @@ public class DepartmentService {
 	public Department readById(Integer id) {
 		log.info("readById(id={})", id);
 
-		return deptRepo.findById(id).orElse(null);
+		return deptRepo.findById(id).orElseThrow();
+//		return deptRepo.findById(id).orElse(null);
 	}
 
 }

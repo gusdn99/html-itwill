@@ -85,7 +85,7 @@ public class HomeController {
 	// path variable을 포함하는 요청을 처리하는 메서드.
 	@GetMapping("/book/details/{id}")
 	public String bookDetails2(@PathVariable(name = "id") int id, Model model) {
-		log.info("/book/details2(id={})", id);
+		log.info("bookDetails2(id={})", id);
 		
 		Book book = Book.builder()
 				.id(id)

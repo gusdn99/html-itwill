@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Boot 2</title>
+    </head>
+    <body>
+		 <div th:replace="~{/layout/fragments :: pageHeader('직원 상세 페이지')}"></div>
+         
+         <div th:object="${employee}">
+            사번: <span th:text="*{id}"></span><br />
+            이름: <span th:text="*{ename}"></span><br />
+            직무: <span th:text="*{job}"></span><br />
+            매니저: <span>
+                        <th:block th:if="*{manager != null}">
+                            <a th:href="@{/employee/details/{id}(id=*{manager.id})}" 
+                                th:text="*{manager.ename}"></a>
+                        </th:block>
+                    </span><br />
+            입사일: <span th:text="*{hiredate}"></span><br />
+            급여: <span th:text="*{salary}"></span><br />
+            수당: <span th:text="*{commission}"></span><br />
+            부서:  <a th:href="@{/department/details/{id}(id=*{department.id})}"
+                        th:text="*{department.dname}"></a><br /> 
+         </div>
+	</body>
+</html>

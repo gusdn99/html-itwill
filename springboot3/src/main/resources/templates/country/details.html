@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Boot 3</title>
+    </head>
+    <body>
+		 <div th:replace="~{/layout/fragments :: pageHeader('나라 상세 페이지')}"></div>
+         
+        <main>
+        <section>
+            <h2>나라 상세 정보</h2>
+            <table>
+                <tbody th:object="${country}">
+                    <tr>
+                        <th>나라코드</th>
+                        <td th:text="*{id}"></td>
+                    </tr>
+                    <tr>
+                        <th>나라이름</th>
+                        <td th:text="*{countryName}"></td>
+                    </tr>
+                    <tr>
+                        <th>지역</th>
+                        <td>
+                            <a th:href="@{/region/details/{id}(id=*{region.id})}"
+                                th:text="*{region.regionName}"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+        
+        <section>
+                <h2>위치 목록</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>위치번호</th>
+                            <th>주소</th>
+                            <th>우편번호</th>
+                            <th>도시</th>
+                            <th>구역</th>
+                            <th>나라</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="loc : ${country.locations}" th:object="${loc}">
+                            <td>
+                                <a th:href="@{/location/details/{id}(id=*{id})}" th:text="*{id}"></a>
+                            </td>
+                            <td th:text="*{streetAddress}"></td>
+                            <td th:text="*{postalCode}"></td>
+                            <td>
+                                <a th:href="@{/location/details/{id}(id=*{id})}" th:text="*{city}"></a>
+                            </td>
+                            <td th:text="*{stateProvince}"></td>
+                            <td>
+                                <a th:href="@{/country/details/{id}(id=*{country.id})}"
+                                    th:text="*{country.countryName}"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+	</body>
+</html>

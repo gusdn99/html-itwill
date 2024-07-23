@@ -31,7 +31,7 @@
                         </td>
                         <td th:text="*{job}"></td>
                         <td>
-                            <th:block th:if="*{manager != null}">
+                            <th:block th:if="*{manager != null}"> <!-- th:block은 th:if를 사용하기 위한 더미 태그 -->
                                 <a th:href="@{/employee/details/{id}(id=*{manager.id})}" 
                                     th:text="*{manager.ename}"></a>
                             </th:block>

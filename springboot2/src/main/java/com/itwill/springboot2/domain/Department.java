@@ -31,8 +31,8 @@ public class Department {
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
 	// @OneToMany: 하나의 엔티티가 여러 엔티티에 연결되는 관계
 	// fetch의 기본값은 EAGER. 여러 테이블을 한꺼번에 빠르게 검색할 때 사용.
-	// EAGER: 처음부터 join 문장을 만듦.(기본값)
-	// LAZY: 처음부터 join 문장을 만들지 않고 필요할 때 만듦.(권장 사항)
+	// EAGER: 처음부터 join 문장을 만듦.(기본값) 연관된 엔티티를 즉시 로딩.
+	// LAZY: 처음부터 join 문장을 만들지 않고 필요할 때 만듦.(권장 사항) 연관된 엔티티를 실제로 사용할 때 로딩.
 	// => LAZY 사용하면 @ToString.Exclude 애너테이션도 같이 사용해야 함.
 	// mappedBy: Employee 엔티티에서 @ManyToOne 애너테이션이 설정된 필드 이름.
 	private List<Employee> employees;

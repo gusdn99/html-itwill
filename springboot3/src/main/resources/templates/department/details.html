@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Boot 3</title>
+    </head>
+    <body>
+		 <div th:replace="~{/layout/fragments :: pageHeader('부서 상세 페이지')}"></div>
+         
+         <main>
+            <section>
+                <h2>부서 상세 정보</h2>
+                <table>
+                    <tbody th:object="${department}">
+                        <tr>
+                            <th>부서번호</th>
+                            <td th:text="*{id}"></td>
+                        </tr>
+                        <tr>
+                            <th>부서이름</th>
+                            <td th:text="*{departmentName}"></td>
+                        </tr>
+                        <tr>
+                            <th>매니저</th>
+                            <td>
+                                <th:block th:if="*{manager != null}">
+                                    <a th:href="@{/employee/details/{id}(id=*{manager.id})}"
+                                        th:text="|*{manager.firstName} *{manager.lastName}|"></a>
+                                </th:block>
+                                <th:block th:if="*{manager == null}">
+                                    ---
+                                </th:block>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>위치</th>
+                            <td>
+                                <a th:href="@{/location/details/{id}(id=*{location.id})}"
+                                    th:text="*{location.city}"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section>
+                <h2>부서 직원 목록</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>사번</th>
+                            <th>이름</th>
+                            <th>성</th>
+                            <th>이메일</th>
+                            <th>전화번호</th>
+                            <th>입사일</th>
+                            <th>직무</th>
+                            <th>급여</th>
+                            <th>수당</th>
+                            <th>매니저</th>
+                            <th>부서</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <th:block th:if="${department != null}"> 
+                            <tr th:each="emp : ${department.employees}" th:object="${emp}">
+                                <td>
+                                    <a th:href="@{/employee/details/{id}(id=*{id})}" th:text="*{id}"></a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/employee/details/{id}(id=*{id})}" th:text="*{firstName}"></a>
+                                </td>
+                                <td>
+                                    <a th:href="@{/employee/details/{id}(id=*{id})}" th:text="*{lastName}"></a>
+                                </td>
+                                <td th:text="*{email}"></td>
+                                <td th:text="*{phoneNumber}"></td>
+                                <td th:text="*{hireDate}"></td> 
+                                <td>
+                                    <a th:href="@{/job/details/{id}(id=*{job.id})}"
+                                        th:text="*{job.jobTitle}"></a>
+                                </td>
+                                <td th:text="*{salary}"></td>
+                                <td th:text="*{commissionPct}"></td>
+                                <td>
+                                    <th:block th:if="*{manager != null}">
+                                        <a th:href="@{/employee/details/{id}(id=*{manager.id})}"
+                                            th:text="|*{manager.firstName} *{manager.lastName}|"></a>
+                                    </th:block>
+                                    <th:block th:if="*{manager == null}">
+                                        ---
+                                    </th:block>
+                                </td>
+                                <td>
+                                    <th:block th:if="*{department != null}">
+                                        <a th:href="@{/department/details/{id}(id=*{department.id})}"
+                                            th:text="*{department.departmentName}"></a>
+                                    </th:block>
+                                    <th:block th:if="*{department == null}">
+                                        ---
+                                    </th:block>
+                                </td>
+                            </tr>
+                        </th:block>
+                        <th:block th:if="${department == null}">
+                            ---
+                        </th:block>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+	</body>
+</html>

@@ -32,15 +32,15 @@
                 <table>
                     <thead>
                         <tr>
-                        <th>사번</th>
-                        <th>이름</th>
-                        <th>직무</th>
-                        <th>매니저</th>
-                        <th>입사일</th>
-                        <th>급여</th>
-                        <th>수당</th>
-                        <th>부서</th>
-                    </tr>
+                            <th>사번</th>
+                            <th>이름</th>
+                            <th>직무</th>
+                            <th>매니저</th>
+                            <th>입사일</th>
+                            <th>급여</th>
+                            <th>수당</th>
+                            <th>부서</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr th:each="emp : ${department.employees}" th:object="${emp}">
@@ -55,7 +55,7 @@
                             <td th:text="*{job}"></td>
                             <td>
                                 <th:block th:if="*{manager != null}">
-                                    <a th:href="@{/employee/details/{id}(id=*{id})}"
+                                    <a th:href="@{/employee/details/{id}(id=*{manager.id})}"
                                         th:text="*{manager.ename}"></a>
                                 </th:block>
                             </td>
@@ -71,13 +71,5 @@
                 </table>
             </section>
         </main>
-         
-         <!-- 
-         <div th:object="${department}">
-            부서: <span th:text="*{id}"></span><br />
-            이름: <span th:text="*{dname}"></span><br />
-            위치: <span th:text="*{location}"></span><br />   
-         </div>
-          --> 
 	</body>
 </html>

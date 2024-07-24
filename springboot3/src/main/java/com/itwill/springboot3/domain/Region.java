@@ -22,9 +22,9 @@ public class Region {
 	@Column(name = "REGION_ID")
 	private Integer id;
 	
-	private String regionName;
+	private String regionName; // 컬럼 이름: region_name
 	
-	@ToString.Exclude
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
-	private List<Country> countries;
+//	@ToString.Exclude
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "region")
+//	private List<Country> countries;
 }

@@ -45,6 +45,8 @@ public class EmployeeRepositoryTest {
 		// 2. Employees 테이블 - Jobs 테이블 간의 관계 테스트(JOB_ID)
 		// 3. Employees 테이블 - Employees 테이블 간의 관계 테스트(MANAGER_ID - EMPLOYEE_ID)
 		// 4. Employees 테이블 - Departments 테이블 간의 관계 테스트(DEPARTMENT_ID)
+		// 5. Employees 테이블 - Departments 테이블 - LOCATIONS 테이블 간의 관계 테스트(LOCATION_ID)
+		// 6. Employees 테이블 - Departments 테이블 - LOCATIONS 테이블 - COUNTRIES 테이블 간의 관계 테스트(COUNTRY_ID)
 		
 		// 테이블에 id(사번)가 존재하는 경우:
 		Employee emp = empRepo.findById(100).orElseThrow();
@@ -52,7 +54,8 @@ public class EmployeeRepositoryTest {
 		log.info("emp.job={}", emp.getJob()); // 2. JOB_ID
 		log.info("emp.manager={}", emp.getManager()); // 3. MANAGER_ID
 		log.info("emp.department={}", emp.getDepartment()); // 4. DEPARTMENT_ID
-		
+		log.info("emp.department.location={}", emp.getDepartment().getLocation()); // 5. LOCATION_ID
+		log.info("emp.department.location.country={}", emp.getDepartment().getLocation().getCountry()); // 6. COUNTRY_ID
 	}
 	
 }

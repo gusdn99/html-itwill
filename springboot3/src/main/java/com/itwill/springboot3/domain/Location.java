@@ -24,13 +24,13 @@ public class Location {
 	@Column(name = "LOCATION_ID")
 	private Integer id;
 	
-	private String streetAddress;
+	private String streetAddress; // 컬럼 이름: street_address
 	
-	private String postalCode;
+	private String postalCode; // 컬럼 이름: postal_code
 	
 	private String city;
 	
-	private String stateProvince;
+	private String stateProvince; // 컬럼 이름: state_province
 	
 //	private String countryId;
 	@ToString.Exclude
@@ -38,8 +38,8 @@ public class Location {
 	@JoinColumn(name = "COUNTRY_ID") // LOCATIONS 테이블에서 COUNTRIES 테이블과 join하는 컬럼 이름.
 	private Country country;
 	
-	@ToString.Exclude
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "location")
-	private List<Department> departments;
+//	@ToString.Exclude
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "location")
+//	private List<Department> departments;
 	
 }

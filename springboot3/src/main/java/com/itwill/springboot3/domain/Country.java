@@ -24,7 +24,7 @@ public class Country {
 	@Column(name = "COUNTRY_ID")
 	private String id;
 	
-	private String countryName;
+	private String countryName; // 컬럼 이름: country_name
 	
 //	private Integer regionId;
 	@ToString.Exclude
@@ -32,8 +32,8 @@ public class Country {
 	@JoinColumn(name = "REGION_ID") // COUNTRIES 테이블에서 REGIONS 테이블과 join하는 컬럼 이름.
 	private Region region;
 	
-	@ToString.Exclude
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
-	private List<Location> locations;
+//	@ToString.Exclude
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
+//	private List<Location> locations;
 	
 }

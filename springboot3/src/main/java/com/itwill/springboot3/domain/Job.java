@@ -22,13 +22,13 @@ public class Job {
 	@Column(name = "JOB_ID")
 	private String id;
 	
-	private String jobTitle;
+	private String jobTitle; // 컬럼 이름: job_title
 	
-	private Integer minSalary;
+	private Integer minSalary; // 컬럼 이름: min_salary
 	
-	private Integer maxSalary;
+	private Integer maxSalary; // 컬럼 이름: max_salary
 	
-	@ToString.Exclude
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "job")
-	private List<Employee> employees;
+//	@ToString.Exclude
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "job")
+//	private List<Employee> employees;
 }

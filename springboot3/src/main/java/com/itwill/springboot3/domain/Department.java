@@ -25,7 +25,7 @@ public class Department {
 	@Column(name = "DEPARTMENT_ID")
 	private Integer id;
 	
-	private String departmentName;
+	private String departmentName; // 컬럼 이름: department_name
 	
 //	private Integer managerId; // 컬럼 이름: manager_id
 	@ToString.Exclude
@@ -40,8 +40,8 @@ public class Department {
 	private Location location;
 	
 	
-	@ToString.Exclude
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
-	private List<Employee> employees;
+//	@ToString.Exclude
+//	@OneToMany(fetch = FetchType.LAZY, mappedBy = "department")
+//	private List<Employee> employees;
 	
 }

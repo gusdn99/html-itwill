@@ -45,10 +45,10 @@ public class Employee {
 //	private Integer deptno;
 	@ToString.Exclude // toString 메서드에서 출력 문자열에서 제외.
 	@ManyToOne(fetch = FetchType.LAZY)
-	// @ManyToOne: 여러 개의 엔티티가(deptno) 하나의 엔티티에 연결되는 관계 (여기서는 EMP 테이블이 기준)
+	// @ManyToOne: 여러 개의 엔터티가(deptno) 하나의 엔터티에 연결되는 관계 (여기서는 EMP 테이블이 기준)
 	// fetch의 기본값은 EAGER. 여러 테이블을 한꺼번에 빠르게 검색할 때 사용.
-	// EAGER: 처음부터 join 문장을 만듦.(기본값) 연관된 엔티티를 즉시 로딩.
-	// LAZY: 처음부터 join 문장을 만들지 않고 필요할 때 만듦.(권장 사항) 연관된 엔티티를 실제로 사용할 때 로딩.
+	// EAGER: 처음부터 join 문장을 만듦.(기본값) 연관된 엔터티를 즉시 로딩.
+	// LAZY: 처음부터 join 문장을 만들지 않고 필요할 때 만듦.(권장 사항) 연관된 엔터티를 실제로 사용할 때 로딩.
 	// => LAZY 사용하면 @ToString.Exclude 애너테이션도 같이 사용해야 함.
 	@JoinColumn(name = "DEPTNO") // EMP 테이블에서 DEPT 테이블과 join하는 컬럼 이름.
 	private Department department;

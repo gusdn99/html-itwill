@@ -19,6 +19,7 @@ public class DepartmentRepositoryTest {
 	
 	@Autowired
 	private DepartmentRepository deptRepo;
+	
 //	@Test
 	public void testDependencyInjection() {
 		// DepartmentRepository 객체가 의존성 주입을 받을 수 있는지 테스트.
@@ -33,8 +34,9 @@ public class DepartmentRepositoryTest {
 		assertThat(count).isEqualTo(27);
 		log.info("count={}", count);
 		
-		List<Department> list = deptRepo.findAll();
-		log.info("list[0]={}", list.get(0));
+		List<Department> departments  = deptRepo.findAll();
+		log.info("list[0]={}", departments .get(0));
+		departments.forEach(System.out::println); // (x) -> System.out.prnitln(x)
 	}
 	
 	@Transactional
@@ -46,6 +48,7 @@ public class DepartmentRepositoryTest {
 		
 		// 테이블에 id(사번)가 존재하는 경우:
 		Department dept = deptRepo.findById(10).orElseThrow();
+		assertThat(dept.getId()).isEqualTo(10);
 		log.info("dept={}", dept); // 1. DepartmentRepository.findById()
 		log.info("dept.manager={}", dept.getManager()); // 2. MANAGER_ID
 		log.info("dept.department={}", dept.getLocation()); // 3. LOCATION_ID

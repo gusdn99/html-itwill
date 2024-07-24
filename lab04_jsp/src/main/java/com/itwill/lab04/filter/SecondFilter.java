@@ -25,7 +25,6 @@ public class SecondFilter extends HttpFilter {
 	 */
     @Override
 	public void destroy() {
-		// TODO Auto-generated method stub
 	}
 
 	/**
@@ -46,7 +45,6 @@ public class SecondFilter extends HttpFilter {
 	 */
 	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
 	}
 
 }

@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <meta charset="UTF-8">
-        <title>Spring Boot 3</title>
+        <th:block th:replace="~{/layout/fragments :: documentHeader}"></th:block>
     </head>
     <body>
-		 <div th:replace="~{/layout/fragments :: pageHeader('부서 상세 페이지')}"></div>
-         
-         <main>
+        <div th:replace="~{/layout/fragments :: pageHeader('부서 상세 정보')}"></div>
+        
+        <main class="m-2">
             <section>
                 <h2>부서 상세 정보</h2>
-                <table>
+                <table class="table table-striped table-hover">
                     <tbody th:object="${department}">
                         <tr>
-                            <th>부서번호</th>
+                            <th>번호</th>
                             <td th:text="*{id}"></td>
                         </tr>
                         <tr>
-                            <th>부서이름</th>
+                            <th>이름</th>
                             <td th:text="*{departmentName}"></td>
                         </tr>
                         <tr>
@@ -43,73 +42,53 @@
                 </table>
             </section>
             
-            <!-- 
+             
             <section>
                 <h2>부서 직원 목록</h2>
-                <table>
+                <table class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>사번</th>
                             <th>이름</th>
-                            <th>성</th>
-                            <th>이메일</th>
                             <th>전화번호</th>
-                            <th>입사일</th>
-                            <th>직무</th>
-                            <th>급여</th>
-                            <th>수당</th>
-                            <th>매니저</th>
+                            <th>직책</th>
                             <th>부서</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <th:block th:if="${department != null}"> 
-                            <tr th:each="emp : ${department.employees}" th:object="${emp}">
-                                <td>
-                                    <a th:href="@{/employee/details/{id}(id=*{id})}" th:text="*{id}"></a>
-                                </td>
-                                <td>
-                                    <a th:href="@{/employee/details/{id}(id=*{id})}" th:text="*{firstName}"></a>
-                                </td>
-                                <td>
-                                    <a th:href="@{/employee/details/{id}(id=*{id})}" th:text="*{lastName}"></a>
-                                </td>
-                                <td th:text="*{email}"></td>
-                                <td th:text="*{phoneNumber}"></td>
-                                <td th:text="*{hireDate}"></td> 
-                                <td>
-                                    <a th:href="@{/job/details/{id}(id=*{job.id})}"
-                                        th:text="*{job.jobTitle}"></a>
-                                </td>
-                                <td th:text="*{salary}"></td>
-                                <td th:text="*{commissionPct}"></td>
-                                <td>
-                                    <th:block th:if="*{manager != null}">
-                                        <a th:href="@{/employee/details/{id}(id=*{manager.id})}"
-                                            th:text="|*{manager.firstName} *{manager.lastName}|"></a>
-                                    </th:block>
-                                    <th:block th:if="*{manager == null}">
-                                        ---
-                                    </th:block>
-                                </td>
-                                <td>
-                                    <th:block th:if="*{department != null}">
-                                        <a th:href="@{/department/details/{id}(id=*{department.id})}"
-                                            th:text="*{department.departmentName}"></a>
-                                    </th:block>
-                                    <th:block th:if="*{department == null}">
-                                        ---
-                                    </th:block>
-                                </td>
-                            </tr>
-                        </th:block>
-                        <th:block th:if="${department == null}">
-                            ---
-                        </th:block>
+                        <tr th:each="emp : ${page.content}" th:object="${emp}">
+                            <td>
+                                <a th:href="@{/employee/details/{id}(id=*{employeeId})}" th:text="*{employeeId}"></a>
+                            </td>
+                            <td>
+                                <a th:href="@{/employee/details/{id}(id=*{employeeId})}" th:text="*{employeeName}"></a>
+                            </td>
+                            <td th:text="*{phoneNumber}"></td>
+                            <td th:text="*{jobTitle}"></td>
+                            <td th:text="*{departmentName}"></td>
+                        </tr>
                     </tbody>
                 </table>
+                
+                <div class="mt-2">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" th:classappend="${!page.hasPrevious()} ? 'disabled'">
+                            <a class="page-link" th:href="@{|/department/details?id=${department.id}&p=${page.number - 1}|}">이전</a>
+                        </li>
+                        <li class="page-item" th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1)}"
+                            th:if="${pageNo >= page.number - 5 && pageNo < page.number + 5}"
+                            th:classappend="${pageNo == page.number} ? 'active'">
+                            <a class="page-link" th:href="@{|/department/details?id=${department.id}&p=${pageNo}|}" th:text="${pageNo + 1}"></a>
+                        </li>
+                        <li class="page-item" th:classappend="${!page.hasNext()} ? 'disabled'">
+                            <a class="page-link" th:href="@{|/department/details?id=${department.id}&p=${page.number + 1}|}">다음</a>
+                        </li>
+                    </ul>
+                </div>
             </section>
-             -->
+             
         </main>
-	</body>
+        
+        <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+    </body>
 </html>

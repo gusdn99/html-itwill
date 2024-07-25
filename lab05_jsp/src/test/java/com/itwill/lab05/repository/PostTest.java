@@ -65,7 +65,6 @@ public class PostTest {
 		
 		result = dao.delete(10); // id(PK)가 없을 때
 		Assertions.assertEquals(0, result);
-		
 	}
 	
 	@Test
@@ -78,6 +77,5 @@ public class PostTest {
 		post = dao.select(0); // id(PK)가 테이블에 없을 때
 		Assertions.assertNull(post);
 	}
-
 	
 }

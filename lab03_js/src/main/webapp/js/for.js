@@ -39,8 +39,3 @@ for (let x = 2; x < 10; x++) {
 }
 result.innerHTML += html;
 result.innerHTML += '<hr/>';
-
-
-
-
-

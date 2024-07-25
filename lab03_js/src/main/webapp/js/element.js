@@ -72,4 +72,3 @@
     divs.forEach((x) => x.style.backgroundColor = 'violet');
  });
  
- 

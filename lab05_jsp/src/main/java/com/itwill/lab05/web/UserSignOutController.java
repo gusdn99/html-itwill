@@ -37,9 +37,4 @@ public class UserSignOutController extends HttpServlet {
 		resp.sendRedirect(url);
 	}
 	
-	
 }
-
-
-
-

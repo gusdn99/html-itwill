@@ -121,5 +121,3 @@ const increaseTen = increase(10);
 console.log(increaseTen(100)); // 110
 
 console.log(increase(1)(1)); // 2
-
-

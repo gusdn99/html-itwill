@@ -7,7 +7,7 @@
 }
 
 body {
-	background-color: lightsalmon;
+    background-color: lightsalmon;
     font: 100% Sans-serif;
     margin: 20px;
     line-height: 26px;
@@ -37,9 +37,7 @@ h2 {
     border-radius: 10px;
     margin: 0 auto;
     width: 1400px;
-    
     text-align: center;
-    
 }
 
 .profile-image {
@@ -54,20 +52,16 @@ h2 {
     color: gray;
     text-align: left;
     font-size: 1.4em;
-    list-style: none; 
+    list-style: none;
 }
 
 .image {
-	background-color: mediumturquoise;
-	border: 2px solid white;
+    background-color: mediumturquoise;
+    border: 2px solid white;
     width: 160px;
     height: 160x;
     border-radius: 100px;
     margin-top: -20px;
     margin-left: 140px;
     padding: 20px;
-	
 }
-
-
-

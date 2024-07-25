@@ -53,11 +53,3 @@ for (let val of drama) {
     html += `<li> ${val} </li>`;
 }
 list.innerHTML += html;
-
- 
- 
- 
- 
- 
- 
- 

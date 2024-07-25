@@ -2,14 +2,19 @@ package com.itwill.springboot3.web;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwill.springboot3.domain.Department;
+import com.itwill.springboot3.dto.EmployeeListItemDto;
 import com.itwill.springboot3.service.DepartmentService;
+import com.itwill.springboot3.service.EmployeeService;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,24 +27,30 @@ public class DepartmentController {
 	
 	// 생성자에 의한 의존성 주입
 	private final DepartmentService deptSvc;
+	private final EmployeeService empSvc;  // 추가: EmployeeService 의존성 주입
 	
 	@GetMapping("/list")
-	public void list(Model model) {
-		log.info("list()");
+	public void list(@RequestParam(name = "p", defaultValue = "0") int pageNo,
+			Model model) {
+		log.info("list(pageNo={})", pageNo);
 		
 		// 서비스(비즈니스) 계층의 메서드를 호출해서 (데이터베이스의) 부서 목록을 불러옴.
-		List<Department> list = deptSvc.read();
+		Page<Department> list = deptSvc.read(pageNo, Sort.by("id"));
 		
 		// 부서 목록을 뷰 템플릿에게 전달
-		model.addAttribute("departments", list);
+		model.addAttribute("page", list);
 	}
 	
 	@GetMapping("/details/{id}")
-	public String details(@PathVariable(name = "id") int id, Model model) {
-		log.info("details(id={})", id);
+	public String details(@PathVariable(name = "id") int id, @RequestParam(name = "p", defaultValue = "0") int pageNo, Model model) {
+		log.info("details(id={}, pageNo={})", id, pageNo);
 		
 		Department dept = deptSvc.readById(id);
 		model.addAttribute("department", dept);
+		
+		// 부서의 직원 목록을 페이징하여 모델에 추가
+		Page<EmployeeListItemDto> employeesPage = empSvc.readByDepartment(id, pageNo, 10); // 추가: 부서별 직원 목록 페이징 처리
+		model.addAttribute("page", employeesPage);
 		
 		return "department/details";
 		

@@ -135,5 +135,3 @@
  console.log(`넓이 = ${cir2.area()}`); // 넓이 = 0
  console.log(`길이 = ${cir2.perimeter()}`); // 길이 = 0
  
- 
- 

@@ -61,8 +61,4 @@ public class PostCreateController extends HttpServlet {
 //		"/WEB-INF/views/post/list.jsp"는 내부 경로라서 클라이언트(브라우저)가 접근할 수 없기 때문.
 	}
 	
-	
-	
-	
-	
 }

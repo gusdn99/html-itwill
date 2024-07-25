@@ -3,6 +3,8 @@ package com.itwill.springboot3.repository;
 import java.time.LocalDate;
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +22,8 @@ import com.itwill.springboot3.domain.Employee;
  */
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
+	Page<Employee> findByDepartmentId(int departmentId, Pageable pageable);
+	
 	// JPA query method 작성 방법:
 	// JPA에서 약속된 키워드들과 엔티티의 필드 이름들을 사용해서
 	// 메서드 이름을 (camel 표기법으로) 작성.

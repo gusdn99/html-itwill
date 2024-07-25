@@ -111,5 +111,3 @@ console.log(`제곱의 합 = ${result}`);
 // numbers의 원소들 중에서 짝수들의 제곱의 합: 4 + 16 + 36
 result = numbers.filter((x) => x % 2 === 0).map((x) => x * x).reduce((acc, cur) => acc + cur, 0);
 console.log(`짝수들의 제곱의 합 = ${result}`);
- 
- 

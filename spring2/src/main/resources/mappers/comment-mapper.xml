@@ -36,5 +36,4 @@
         select * from comments where id = #{id}
     </select>
     
-    
 </mapper>

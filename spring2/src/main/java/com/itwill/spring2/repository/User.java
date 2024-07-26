@@ -19,4 +19,3 @@ public class User {
 	private Integer points; // 포인트
 
 }
-

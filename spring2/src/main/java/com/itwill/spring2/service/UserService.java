@@ -27,6 +27,7 @@ public class UserService {
 		} else { // userid가 일치하는 레코드가 있을 때(아이디가 중복된 경우)
 			return false;
 		}
+		
 	}
 	
 	// 회원 가입 서비스
@@ -52,7 +53,6 @@ public class UserService {
 		log.debug("read()");
 		User user = userDao.selectByUserId(userid);
 		return user;
-		
 	}
 
 }

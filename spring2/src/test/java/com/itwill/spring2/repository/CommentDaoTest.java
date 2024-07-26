@@ -82,5 +82,4 @@ public class CommentDaoTest {
 		Assertions.assertNull(comment2);
 	}
 	
-
 }

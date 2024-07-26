@@ -27,13 +27,18 @@
                         </td>
                         <td th:text="*{phoneNumber}"></td>
                         <td th:text="*{jobTitle}"></td>
+                        <td>
+                            <a th:href="@{/department/details(dname=*{departmentName})}"
+                                th:text="*{departmentName}">
+                            </a>
+                        </td>
                         <!-- 
                         <td>
                             <a th:href="@{/job/details/{id}(id=*{job.id})}"
                                 th:text="*{jobTitle}"></a>
                         </td>
                          -->
-                        <td th:text="*{departmentName}"></td>
+                        <!-- <td th:text="*{departmentName}"></td>  -->
                         <!-- 
                         <td>
                             <th:block th:if="*{department != null}">
@@ -49,28 +54,7 @@
                 </tbody>
             </table>
             
-            <div class="mt-2">
-                <ul class="pagination justify-content-center">
-                    <li class="page-item"
-                        th:classappend="${!page.hasPrevious} ? 'disabled'">
-                        <a class="page-link"
-                            th:href="@{|?p=${page.number - 1}|}">이전</a>
-                    </li>
-                    <li class="page-item"
-                        th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1)}"
-                        th:if="${pageNo >= page.number - 5 && pageNo < page.number + 5}"
-                        th:classappend="${pageNo == page.number} ? 'active'">
-                        <a class="page-link"
-                            th:href="@{|?p=${pageNo}|}"
-                            th:text="${pageNo + 1}"></a>
-                    </li>
-                    <li class="page-item"
-                        th:classappend="${!page.hasNext} ? 'disabled'">
-                        <a class="page-link"
-                            th:href="@{|?p=${page.number + 1}|}">다음</a>
-                    </li>
-                </ul>
-            </div>
+            <div class="mt-2" th:insert="~{/layout/fragments :: pagination}"></div>
             
         </main>
         

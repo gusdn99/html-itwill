@@ -23,7 +23,7 @@ public class PostDaoTest {
 	private PostDao postDao; // 인터페이스 객체 생성
 	
 	
-//	@Test
+	@Test
 	public void testSelectAll() {
 		Assertions.assertNotNull(postDao);
 		

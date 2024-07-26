@@ -14,7 +14,6 @@ import com.itwill.spring2.dto.PostListDto;
 import com.itwill.spring2.dto.PostSearchDto;
 import com.itwill.spring2.dto.PostUpdateDto;
 import com.itwill.spring2.repository.Post;
-import com.itwill.spring2.service.CommentService;
 import com.itwill.spring2.service.PostService;
 
 import lombok.RequiredArgsConstructor;
@@ -105,4 +104,3 @@ public class PostController {
 	}
 	
 }
-

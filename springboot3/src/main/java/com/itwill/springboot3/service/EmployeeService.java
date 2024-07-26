@@ -51,16 +51,16 @@ public class EmployeeService {
 		
 	}
 	
-	@Transactional(readOnly = true)
-    public Page<EmployeeListItemDto> readByDepartment(int departmentId, int pageNo, int size) {
-        log.info("readByDepartment(departmentId={}, pageNo={}, size={})", departmentId, pageNo, size);
-        
-        Pageable pageable = PageRequest.of(pageNo, size, Sort.by("id"));
-        Page<Employee> employees = empRepo.findByDepartmentId(departmentId, pageable);
-
-        log.info("emp list size = {}", employees.getTotalElements());
-        
-        return employees.map(EmployeeListItemDto::fromEntity);
-    }
+//	@Transactional(readOnly = true)
+//    public Page<EmployeeListItemDto> readByDepartment(int departmentId, int pageNo, int size) {
+//        log.info("readByDepartment(departmentId={}, pageNo={}, size={})", departmentId, pageNo, size);
+//        
+//        Pageable pageable = PageRequest.of(pageNo, size, Sort.by("id"));
+//        Page<Employee> employees = empRepo.findByDepartmentId(departmentId, pageable);
+//
+//        log.info("emp list size = {}", employees.getTotalElements());
+//        
+//        return employees.map(EmployeeListItemDto::fromEntity);
+//    }
 	
 }

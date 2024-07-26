@@ -38,6 +38,3 @@ document.addEventListener('DOMContentLoaded', () => {
    });
    
 });
-
-
-

@@ -16,6 +16,4 @@ public class HomeController {
 		return "home"; // 뷰(JSP)의 이름.
 	}
 	
-
 }
-

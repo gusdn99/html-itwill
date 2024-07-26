@@ -33,7 +33,7 @@ public class EmployeeController {
 		log.info("list(pageNo={})", pageNo);
 		
 		// 서비스(비즈니스) 계층의 메서드를 호출해서 뷰에 전달할 직원 목록을 가져옴.
-		Page<EmployeeListItemDto> list = empSvc.read(pageNo, Sort.by("id"));
+		Page<EmployeeListItemDto> list = empSvc.read(pageNo, Sort.by("id")); // "id"는 엔터티의 필드 이름
 		
 		// 직원 목록을 뷰 템플릿에게 전달
 		model.addAttribute("page", list);

@@ -25,7 +25,7 @@ public class CommentServiceTest {
 	
 	@Autowired private CommentService commentService;
 	
-//	@Test
+	@Test
 	public void testReadByPostId() {
 		List<CommentItemDto> list = commentService.readByPostId(2);
 		for (CommentItemDto dto : list) {
@@ -56,4 +56,5 @@ public class CommentServiceTest {
 //		
 //		return result;
 //	}
+	
 }

@@ -19,4 +19,3 @@ public class Comment {
 	private LocalDateTime modifiedTime; // 댓글 최종 수정 시간
 	
 }
-

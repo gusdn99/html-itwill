@@ -25,7 +25,5 @@ public interface CommentDao {
 	
 	// 댓글 아이디(PK)로 검색
 	Comment selectById(Integer id);
-	
-	
+		
 }
-

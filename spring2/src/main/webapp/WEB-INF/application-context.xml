@@ -43,7 +43,5 @@
         필요한 곳에 의존성을 주입해줌.
     -->
     <context:component-scan base-package="com.itwill.spring2.service" />
-    
-    
+       
 </beans>
-

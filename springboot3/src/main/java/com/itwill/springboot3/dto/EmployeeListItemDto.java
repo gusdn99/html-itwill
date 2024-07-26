@@ -14,7 +14,9 @@ public class EmployeeListItemDto {
 	private String employeeName;
 	private String phoneNumber;
 	private String jobTitle;
-	private String departmentName;
+    private Integer jobId;
+    private String departmentName;
+    private Integer departmentId;
 	
 	public static EmployeeListItemDto fromEntity(Employee entity) {
 		// job과 department가 null일 경우 처리를 하기 위해서.
@@ -32,4 +34,5 @@ public class EmployeeListItemDto {
 				.departmentName(deptName)
 				.build();
 	}
+	
 }

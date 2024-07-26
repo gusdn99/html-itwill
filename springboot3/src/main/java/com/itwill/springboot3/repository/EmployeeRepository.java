@@ -22,7 +22,7 @@ import com.itwill.springboot3.domain.Employee;
  */
 
 public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
-	Page<Employee> findByDepartmentId(int departmentId, Pageable pageable);
+//	Page<Employee> findByDepartmentId(int departmentId, Pageable pageable);
 	
 	// JPA query method 작성 방법:
 	// JPA에서 약속된 키워드들과 엔티티의 필드 이름들을 사용해서

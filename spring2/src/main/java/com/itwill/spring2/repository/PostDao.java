@@ -15,4 +15,3 @@ public interface PostDao {
 	List<Post> search(PostSearchDto dto);
 
 }
-

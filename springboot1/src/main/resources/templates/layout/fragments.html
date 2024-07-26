@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
     <body>
-    
         <!-- 다른 HTML 파일들에서 공통으로 사용할 프래그먼트를 정의 -->
         <header th:fragment="myHeader(title)"> <!-- 함수의 파라미터 -->
             <h1 th:text="${title}">HEADER</h1>
@@ -14,6 +13,5 @@
                 <li>세 번째 페이지</li>
             </ul>
         </nav>
-        
 	</body>
 </html>

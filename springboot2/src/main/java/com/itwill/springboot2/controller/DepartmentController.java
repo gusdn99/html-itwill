@@ -32,6 +32,7 @@ public class DepartmentController {
 		
 		// 부서 목록을 뷰 템플릿에게 전달
 		model.addAttribute("departments", list);
+		
 	}
 	
 	@GetMapping("/details/{id}")
@@ -44,4 +45,5 @@ public class DepartmentController {
 		return "department/details";
 		
 	}
+	
 }

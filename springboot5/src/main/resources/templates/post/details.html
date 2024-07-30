@@ -4,15 +4,14 @@
         <th:block th:replace="~{/layout/fragments :: documentHeader}"></th:block>
     </head>
     <body>
-		<th:block th:replace="~{/layout/fragments :: pageHeader('포스트 상세 페이지')}"></th:block>
+		<th:block th:replace="~{/layout/fragments :: pageHeader('포스트 상세보기 페이지')}"></th:block>
         
-        <main class="mt-2">
-            <div class="card">
+        <main>
+            <div class="mt-2 card">
                 <div class="card-header">
                     <h2>포스트 상세보기</h2>
                 </div>
-                <div class="card-body">
-                
+                <div class="card-body">   
                     <form>
                         <div class="mt-2">
                             <label for="id" class="form-label">번호</label>
@@ -45,14 +44,14 @@
                                 th:value="${#temporals.format(post.modifiedTime, 'yyyy-MM-dd HH:mm:ss')}" readonly />
                         </div>
                     </form>
+                    <div class="mt-2">
+                        <a class="btn btn-outline-primary form-control"
+                            th:href="@{/post/modify(id=${post.id})}" th:text="수정하기"></a>
+                    </div>         
                 </div>
-                
-                <div class="card-footer">
-                    <a class="btn btn-outline-primary" th:href="@{/post/modify(id=${post.id})}" th:text="수정하기"></a>
-                </div>
-                
             </div>
         </main>
+        
         <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
 	</body>
 </html>

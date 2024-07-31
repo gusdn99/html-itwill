@@ -126,5 +126,4 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 			+ "where e.department.location.country.countryName = :cname")
 	List<Employee> findByCtryName(@Param("cname") String ctryName);
 	
-	
 }

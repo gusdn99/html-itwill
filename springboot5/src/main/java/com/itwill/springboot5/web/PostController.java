@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.itwill.springboot5.domain.Post;
 import com.itwill.springboot5.dto.PostCreateDto;
 import com.itwill.springboot5.dto.PostListItemDto;
-import com.itwill.springboot5.dto.PostSearchDto;
+import com.itwill.springboot5.dto.PostSearchRequestDto;
 import com.itwill.springboot5.dto.PostUpdateDto;
 import com.itwill.springboot5.service.PostService;
 
@@ -83,16 +83,6 @@ public class PostController {
 		
 	}
 	
-	@PostMapping("/update")
-	public String update(PostUpdateDto dto) {
-		log.info("update(dto = {}", dto);
-		
-		postSvc.update(dto);
-		
-		return "redirect:/post/details?id=" + dto.getId();
-		
-	}
-	
 	@GetMapping("/delete")
 	public String delete(@RequestParam(name = "id", defaultValue = "0") long id) {
 		log.debug("delete(id = {})", id);
@@ -104,19 +94,41 @@ public class PostController {
 		return "redirect:/post/list";
 	}
 	
+	@PostMapping("/update")
+	public String update(PostUpdateDto dto) {
+		log.info("update(dto = {}", dto);
+		
+		postSvc.update(dto);
+		
+		return "redirect:/post/details?id=" + dto.getId();
+		
+	}
+	
 	@GetMapping("/search")
-	public String search(@RequestParam(name = "p", defaultValue = "0") int pageNo, PostSearchDto dto,
+	public String search(PostSearchRequestDto dto,
 	                     Model model) {
-	    log.info("search(pageNo={}, searchDto={})", pageNo, dto);
-
-	    // 서비스 계층의 메서드를 호출
-	    Page<PostListItemDto> list = postSvc.search(dto, pageNo, Sort.by("id").descending());
-
-	    // 뷰에 포스트 목록을 전달
-	    model.addAttribute("page", list);
-	    model.addAttribute("search", dto);
+	    log.info("search(dto = {})", dto);
+	    
+	    Page<PostListItemDto> page = postSvc.search(dto, Sort.by("id").descending());
+	    
+	    model.addAttribute("page", page);
 
 	    return "post/list"; // 검색 결과를 표시할 뷰 이름
 	}
+	
+//	@GetMapping("/search")
+//	public String search(@RequestParam(name = "p", defaultValue = "0") int pageNo, PostSearchRequestDto dto,
+//	                     Model model) {
+//	    log.info("search(pageNo = {}, dto = {})", pageNo, dto);
+//
+//	    // 서비스 계층의 메서드를 호출
+//	    Page<PostListItemDto> list = postSvc.search(dto, pageNo, Sort.by("id").descending());
+//
+//	    // 뷰에 포스트 목록을 전달
+//	    model.addAttribute("page", list);
+//	    model.addAttribute("search", dto);
+//
+//	    return "post/list"; // 검색 결과를 표시할 뷰 이름
+//	}
 	
 }

@@ -9,11 +9,27 @@ import org.springframework.data.repository.query.Param;
 import com.itwill.springboot5.domain.Post;
 
 // CRUD + Paging/Sorting
-public interface PostRepository extends JpaRepository<Post, Long>{
-	@Query("SELECT p FROM Post p WHERE " +
-	           "(:category = 't' AND UPPER(p.title) LIKE UPPER(CONCAT('%', :keyword, '%'))) OR " +
-	           "(:category = 'c' AND UPPER(p.content) LIKE UPPER(CONCAT('%', :keyword, '%'))) OR " +
-	           "(:category = 'tc' AND (UPPER(p.title) LIKE UPPER(CONCAT('%', :keyword, '%')) OR UPPER(p.content) LIKE UPPER(CONCAT('%', :keyword, '%')))) OR " +
-	           "(:category = 'a' AND UPPER(p.author) LIKE UPPER(CONCAT('%', :keyword, '%')))")
-	    Page<Post> search(@Param("category") String category, @Param("keyword") String keyword, Pageable pageable);
+public interface PostRepository extends JpaRepository<Post, Long>, PostQuerydsl {
+	// JPA Query Method 작성:
+	
+	// 1. 제목에 포함된 문자열 대소문자 구분없이 검색하기:
+	Page<Post> findByTitleContainingIgnoreCase(String keyword, Pageable pageable);
+	
+	// 2. 내용에 포함된 문자열 대소문자 구분없이 검색하기:
+	Page<Post> findByContentContainingIgnoreCase(String keyword, Pageable pageable);
+	
+	// 3. 작성자에 포함된 문자열 대소문자 구분없이 검색하기:
+	Page<Post> findByAuthorContainingIgnoreCase(String keyword, Pageable pageable);
+	
+	// JPQL(Java Persistence Query Language): 객체지향 쿼리 언어.
+	
+	// 4. 제목 또는 내용에 포함된 문자열 대소문자 구분없이 검색하기:
+	// findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(args)
+	// findByTitleContainingOrContentContainingAllIgnoreCase(args)
+	
+	@Query("select p from Post p "
+			+ "where upper(p.title) like upper('%' || :keyword || '%') " 
+			+ "or upper(p.content) like upper('%' || :keyword || '%') ")
+	Page<Post> findByTitleOrContent(@Param("keyword") String keyword, Pageable pageable);
+	
 }

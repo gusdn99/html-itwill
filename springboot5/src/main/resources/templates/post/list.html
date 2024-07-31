@@ -8,7 +8,6 @@
            
         <main class="mt-2">
             <div class="card">
-            
                 <div class="card-header">
                     <form method="get" th:action="@{/post/search}">
                         <div class="row">
@@ -16,7 +15,7 @@
                                 <select class="form-control" name="category">
                                     <option value="t">제목</option>
                                     <option value="c">내용</option>
-                                    <option value="tc">제목+내용</option>
+                                    <option value="tc">제목 + 내용</option>
                                     <option value="a">작성자</option>
                                 </select>
                             </div>
@@ -29,8 +28,6 @@
                         </div>
                     </form>
                 </div>
-                
-                 
                 <div class="card-body">
                     <table class="mt-2 table table-hover">
                         <thead>

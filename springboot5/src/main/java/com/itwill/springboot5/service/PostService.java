@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.itwill.springboot5.domain.Post;
 import com.itwill.springboot5.dto.PostCreateDto;
 import com.itwill.springboot5.dto.PostListItemDto;
-import com.itwill.springboot5.dto.PostSearchDto;
+import com.itwill.springboot5.dto.PostSearchRequestDto;
 import com.itwill.springboot5.dto.PostUpdateDto;
 import com.itwill.springboot5.repository.PostRepository;
 
@@ -96,6 +96,14 @@ public class PostService {
 	}
 	
 	@Transactional
+	public void delete(Long id) {
+		log.debug("delete(id = {})", id);
+		
+		postRepo.deleteById(id);
+		
+	}
+	
+	@Transactional
 	public Post update(PostUpdateDto dto) {
 		log.info("update(dto = {}", dto);
 		
@@ -113,31 +121,55 @@ public class PostService {
 		return entity;
 	}
 	
-	@Transactional
-	public void delete(Long id) {
-		log.debug("delete(id = {})", id);
-
-        postRepo.deleteById(id);
-
+	@Transactional(readOnly = true)
+	public Page<PostListItemDto> search(PostSearchRequestDto dto, Sort sort) {
+		log.info("search(dto = {}, sort = {})", dto, sort);
+		
+		Pageable pageable = PageRequest.of(dto.getP(), 5, sort);
+		
+//		Page<Post> page = postRepo.findByTitleOrContent(dto.getKeyword(), pageable);
+		Page<Post> result = null;
+		
+		switch (dto.getCategory()) {
+		case "t":
+			result = postRepo.findByTitleContainingIgnoreCase(dto.getKeyword(), pageable);
+			break;
+		case "c":
+			result = postRepo.findByContentContainingIgnoreCase(dto.getKeyword(), pageable);
+			break;
+		case "tc":
+			result = postRepo.findByTitleOrContent(dto.getKeyword(), pageable);
+			break;
+		case "a":
+			result = postRepo.findByAuthorContainingIgnoreCase(dto.getKeyword(), pageable);
+			break;
+		}
+		
+		log.info("page.getTotalPages = {}", result.getTotalPages());
+	    log.info("page.number = {}", result.getNumber());
+	    log.info("page.hasPrevious = {}", result.hasPrevious());
+	    log.info("page.hasNext = {}", result.hasNext());
+		
+		return result.map(PostListItemDto::fromEntity);
 	}
 	
-	@Transactional(readOnly = true)
-	public Page<PostListItemDto> search(PostSearchDto searchDto, int pageNo, Sort sort) {
-	    log.info("search(searchDto = {}, pageNo = {}, sort = {})", searchDto, pageNo, sort);
-
-	    // Pageable 객체 생성
-	    Pageable pageable = PageRequest.of(pageNo, 5, sort);
-
-	    // searchPosts 메서드 호출
-	    Page<Post> page = postRepo.search(searchDto.getCategory(), searchDto.getKeyword(), pageable);
-
-	    log.info("page.getTotalPages = {}", page.getTotalPages());
-	    log.info("page.number = {}", page.getNumber());
-	    log.info("page.hasPrevious = {}", page.hasPrevious());
-	    log.info("page.hasNext = {}", page.hasNext());
-
-	    // Page<Post>를 Page<PostListItemDto>로 변환
-	    return page.map(PostListItemDto::fromEntity);
-	}
+//	@Transactional(readOnly = true)
+//	public Page<PostListItemDto> search(PostSearchRequestDto dto, int pageNo, Sort sort) {
+//	    log.info("search(dto = {}, pageNo = {}, sort = {})", dto, pageNo, sort);
+//
+//	    // Pageable 객체 생성
+//	    Pageable pageable = PageRequest.of(pageNo, 5, sort);
+//
+//	    // searchPosts 메서드 호출
+//	    Page<Post> page = postRepo.search(dto.getCategory(), dto.getKeyword(), pageable);
+//
+//	    log.info("page.getTotalPages = {}", page.getTotalPages());
+//	    log.info("page.number = {}", page.getNumber());
+//	    log.info("page.hasPrevious = {}", page.hasPrevious());
+//	    log.info("page.hasNext = {}", page.hasNext());
+//
+//	    // Page<Post>를 Page<PostListItemDto>로 변환
+//	    return page.map(PostListItemDto::fromEntity);
+//	}
 	
 }

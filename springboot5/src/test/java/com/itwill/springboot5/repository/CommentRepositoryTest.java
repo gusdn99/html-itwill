@@ -22,7 +22,7 @@ public class CommentRepositoryTest {
 	@Autowired
 	private CommentRepository commentRepo;
 	
-//	@Test
+	@Test
 	public void testDependencyInjection() {
 		assertThat(commentRepo).isNotNull();
 		log.info("commentRepo = {}", commentRepo);
@@ -69,7 +69,7 @@ public class CommentRepositoryTest {
 	
 //	@Test
 	public void testDeleteByPostId() {
-		commentRepo.deleteByPostId(6L);
+		
 	}
 	
 //	@Test

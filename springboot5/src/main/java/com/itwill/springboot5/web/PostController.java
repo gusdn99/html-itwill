@@ -112,23 +112,11 @@ public class PostController {
 	    Page<PostListItemDto> page = postSvc.search(dto, Sort.by("id").descending());
 	    
 	    model.addAttribute("page", page);
-
+	    
+	    // pagination fragment에서 사용할 현재 요청 주소 정보
+        model.addAttribute("baseUrl", "/post/search");
+        
 	    return "post/list"; // 검색 결과를 표시할 뷰 이름
 	}
-	
-//	@GetMapping("/search")
-//	public String search(@RequestParam(name = "p", defaultValue = "0") int pageNo, PostSearchRequestDto dto,
-//	                     Model model) {
-//	    log.info("search(pageNo = {}, dto = {})", pageNo, dto);
-//
-//	    // 서비스 계층의 메서드를 호출
-//	    Page<PostListItemDto> list = postSvc.search(dto, pageNo, Sort.by("id").descending());
-//
-//	    // 뷰에 포스트 목록을 전달
-//	    model.addAttribute("page", list);
-//	    model.addAttribute("search", dto);
-//
-//	    return "post/list"; // 검색 결과를 표시할 뷰 이름
-//	}
 	
 }

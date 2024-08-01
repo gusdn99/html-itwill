@@ -49,36 +49,24 @@
         
         <th:block th:fragment="pagination">
             <nav>
-                <ul class="pagination justify-content-center"
-                    th:with="uriBuilder=${T(com.itwill.springboot5.web.ServletUriComponentsBuilderWrapper).fromCurrentRequest()}">
-                    <!--
-                    th:with는 변수 선언 속성. (여기서는 uriBuilder가 변수 이름)          
-                    T(com.itwill.springboot5.web.ServletUriComponentsBuilderWrapper).fromCurrentRequest()를 호출해서 
-                    현재 요청의 URI를 기반으로 한 UriComponentsBuilder 인스턴스를 생성함.
-                    이 인스턴스를 사용하여 현재 URI를 수정하거나 파라미터를 추가/변경할 수 있음.
-                     -->
+                <ul class="pagination justify-content-center">
                     <li class="page-item"
                         th:classappend="${!page.hasPrevious} ? 'disabled'">
-                        <a class="page-link"
-                            th:href="@{${uriBuilder.replaceQueryParam('p', page.number - 1).toUriString()}}">이전</a>
-                            <!--
-                            replaceQueryParam: UriComponentsBuilder 클래스의 메서드임.
-                            URI의 쿼리 파라미터를 교체하거나 추가하는 데 사용됨.
-                            쿼리 파라미터가 이미 존재하면 값을 교체하고, 없으면 새로 추가함.
-                            -->
+                       <a class="page-link"
+                            th:href="@{${baseUrl}(p=${page.number - 1}, category=${param.category}, keyword=${param.keyword})}">이전</a>
                     </li>
                     <li class="page-item"
-                        th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1)}"
+                        th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1, 1)}"
                         th:if="${pageNo >= page.number - 5 && pageNo < page.number + 5}"
                         th:classappend="${pageNo == page.number} ? 'active'">
                         <a class="page-link"
-                            th:href="@{${uriBuilder.replaceQueryParam('p', pageNo).toUriString()}}"
+                            th:href="@{${baseUrl}(p=${pageNo}, category=${param.category}, keyword=${param.keyword})}"
                             th:text="${pageNo + 1}"></a>
                     </li>
                     <li class="page-item"
                         th:classappend="${!page.hasNext} ? 'disabled'">
                         <a class="page-link"
-                            th:href="@{${uriBuilder.replaceQueryParam('p', page.number + 1).toUriString()}}">다음</a>
+                            th:href="@{${baseUrl}(p=${page.number + 1}, category=${param.category}, keyword=${param.keyword})}">다음</a>
                     </li>
                 </ul>
             </nav>

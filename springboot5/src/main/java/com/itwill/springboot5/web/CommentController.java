@@ -55,38 +55,18 @@ public class CommentController {
 	public ResponseEntity<Long> deleteComment(@PathVariable long id) {
 		log.info("deleteComment(id = {})", id);
 		
-		commentSvc.deleteById(id);
+		commentSvc.delete(id);
 		
-		return ResponseEntity.ok(id);
+		return ResponseEntity.ok(id); // 삭제한 댓글의 아이디를 응답으로 보냄.
 	}
 	
-//	@PostMapping("/update")
-//	public String update(PostUpdateDto dto) {
-//		log.info("update(dto = {}", dto);
-//		
-//		postSvc.update(dto);
-//		
-//		return "redirect:/post/details?id=" + dto.getId();
-//		
-//	}
-	
-//	@PutMapping("/{id}")
-//  public ResponseEntity<Integer> updateComment(@PathVariable int id, @RequestBody CommentUpdateDto dto) {
-//  	log.debug("updateComment(id = {}, dto = {})", id, dto);
-//      
-//      dto.setId(id); // dto의 아이디를 채움.
-//  	
-//  	int result = commentService.update(dto);
-//  	return ResponseEntity.ok(result);
-//  }
-	
 	@PutMapping("/{id}")
-	public ResponseEntity<Comment> updateComment(@PathVariable long id, @RequestBody CommentUpdateDto dto) {
+	public ResponseEntity<Long> updateComment(@PathVariable long id, @RequestBody CommentUpdateDto dto) {
 		log.info("updateComment(id = {}, dto = {})", id, dto);
 		
 		commentSvc.update(dto);
 		
-		return ResponseEntity.ok(dto.toEntity());
+		return ResponseEntity.ok(id); // 업데이트한 댓글의 아이디를 응답으로 보냄.
 	}
 	
 }

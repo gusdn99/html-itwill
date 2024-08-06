@@ -1,9 +1,8 @@
 package com.itwill.springboot5.web;
 
-import java.util.List;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,24 +40,16 @@ public class PostController {
 		
 	}
 	
-//	@GetMapping("/list")
-//	public void list(Model model) {
-//		log.info("list()");
-//		
-//		// 서비스 계층의 메서드를 호출
-//		List<PostListItemDto> list = postSvc.read();
-//		
-//		// 뷰에 포스트 목록을 전달
-//		model.addAttribute("posts", list);
-//		
-//	}
-	
+	// 괄호 안에 호출하려고 하는 메서드 이름을 적어야 함.
+	// @PreAuthorize("authenticated()") // => role에 상관없이 아이디/비밀번호로만 인증.
+	@PreAuthorize("hasRole('USER')") // => role이 일치하는 아이디/비밀번호 인증.
 	@GetMapping("/create")
 	public void create() {
 		log.info("GET: create()");
 		
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/create")
 	public String create(PostCreateDto dto) {
 		log.info("POST: create(dto = {})", dto);
@@ -70,6 +61,7 @@ public class PostController {
 		
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping({ "/details", "/modify" })
 	public void details(@RequestParam(name = "id", defaultValue = "0.0") long id, Model model) {
 		log.info("details(id = {})", id);
@@ -83,6 +75,7 @@ public class PostController {
 		
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@GetMapping("/delete")
 	public String delete(@RequestParam(name = "id", defaultValue = "0") long id) {
 		log.debug("delete(id = {})", id);
@@ -94,6 +87,7 @@ public class PostController {
 		return "redirect:/post/list";
 	}
 	
+	@PreAuthorize("hasRole('USER')")
 	@PostMapping("/update")
 	public String update(PostUpdateDto dto) {
 		log.info("update(dto = {}", dto);

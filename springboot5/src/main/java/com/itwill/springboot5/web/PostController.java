@@ -41,7 +41,7 @@ public class PostController {
 	}
 	
 	// 괄호 안에 호출하려고 하는 메서드 이름을 적어야 함.
-	// @PreAuthorize("authenticated()") // => role에 상관없이 아이디/비밀번호로만 인증.
+	// @PreAuthorize("isAuthenticated()") // => role에 상관없이 아이디/비밀번호로만 인증.
 	@PreAuthorize("hasRole('USER')") // => role이 일치하는 아이디/비밀번호 인증.
 	@GetMapping("/create")
 	public void create() {

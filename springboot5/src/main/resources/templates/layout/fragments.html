@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
         <th:block th:fragment="documentHeader">
             <meta charset="utf-8" />
@@ -38,9 +39,31 @@
                                 <a class="nav-link"
                                     th:href="@{/post/create}">새 포스트</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled">TODO</a>
-                            </li>
+                            <th:block sec:authorize="isAnonymous()"> <!-- 로그인 안 된 상태 -->
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        th:href="@{/member/signin}">로그인</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link"
+                                        th:href="@{/member/signup}">회원가입</a>
+                                </li>
+                            </th:block>
+                            <th:block sec:authorize="isAuthenticated()"> <!-- 로그인 된 상태 -->
+                                <li class="nav-item">
+                                    <!--
+                                    Spring Security에서 로그아웃 기능이 구현된 요청 주소.
+                                    Spring Security의 기본 로그아웃 설정 주소는 "/logout".
+                                    로그아웃 되면, 자동으로 로그인 화면으로 리다이렉트됨.
+                                    이 때는, 주소 창에 "logout"이 파라미터가 있음.
+                                    예) http://localhost:8080/member/signin?logout
+                                    -->
+                                    <a class="nav-link" th:href="@{/logout}">
+                                        <span class="text-secondary" sec:authentication="name"></span>
+                                        <span class="mx-1 text-primary">로그아웃</span>
+                                    </a>
+                                </li>
+                            </th:block>
                         </ul>
                     </div>
                 </div>

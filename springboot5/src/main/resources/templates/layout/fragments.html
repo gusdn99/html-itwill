@@ -59,7 +59,7 @@
                                     예) http://localhost:8080/member/signin?logout
                                     -->
                                     <a class="nav-link" th:href="@{/logout}">
-                                        <span class="text-secondary" sec:authentication="name"></span>
+                                        <span class="text-secondary" id="authenticatedUser" sec:authentication="name"></span>
                                         <span class="mx-1 text-primary">로그아웃</span>
                                     </a>
                                 </li>

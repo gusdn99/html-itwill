@@ -12,7 +12,7 @@ public enum MemberRole {
 		this.authority = authority;
 	}
 	
-	public String getAuthority() {
+	public String getAuthority() { // Member 엔터티의 GrantedAuthority를 위해 사용됨.
 		return this.authority;
 	}
 	

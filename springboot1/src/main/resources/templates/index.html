@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Boot 1</title>
+    </head>
+    <body>
+        <!--  fragments expression:
+            templates/layout/fragments.html 파일에서 선언된 myHeader 프래그먼트 끼워넣기.
+            div 태그 대신 프래그먼트 태그로 교체(replace)가 되는 방식. -->
+        <div th:replace="~{/layout/fragments :: myHeader('Home Page')}"></div> <!-- 함수의 아규먼트 -->
+        
+        <!-- fragement expression:
+            templates/layout/fragments.html 파일에서 선언된 navigation 프래그먼트 끼워넣기.
+            div 안에 프래그먼트를 삽입(insert)하는 방식.
+             -->
+        <div th:insert="~{/layout/fragments :: navigation}"></div>
+    
+		<h1>첫 번째 Spring Boot 프로젝트</h1>
+        <!-- thymeleaf variable expression -->
+        <h2 th:text="${currentTime}">현재 시간</h2>
+        <h2 th:text="${book}"></h2>
+        <div>
+            ID: <span th:text="${book.id}"></span>
+            <br />
+            제목: <span th:text="${book.title}"></span>
+            <br />
+            저자: <span th:text="|${book.author.firstName} ${book.author.lastName}|"></span>
+        </div>
+        
+        <div th:object="${book}">
+            <!-- selection expression -->
+            ID: <span th:text="*{id}"></span>
+            <br />
+            TITLE: <span th:text="*{title}"></span>
+            <br />
+            AUTHOR: <span th:text="|*{author.firstName} *{author.lastName}|"></span>
+            <br />
+        </div>
+        
+        <nav>
+            <ul>
+                <li>
+                    <!-- thymeleaf link(URL) expression
+                        JSTL의 c:url 태그와 비슷한 기능. -->
+                    <a th:href="@{/book/list}">도서 목록</a> <!-- context path부터 시작 -->
+                </li>
+                <li>
+                    <!-- 질의문자열(query string)을 포함하는 URL 작성 방법: -->
+                    <!-- <a th:href="@{/book/details?id=1}">도서1 상세 페이지</a>  -->
+                    <a th:href="@{/book/details(id=1)}">도서1 상세 페이지</a>
+                    <!-- @{/book/details(id=1, title='종의 기원')}" -->
+                </li>
+                <li>
+                    <!-- path variable을 포함하는 URL expression 작성 방법 -->
+                    <!-- <a th:href="@{/book/details/} + 1">도서2 상세 페이지</a> -->
+                    <a th:href="@{/book/details/{id}(id=1)}">도서2 상세 페이지</a>
+                </li>
+            </ul>
+        </nav>   
+	</body>
+</html>

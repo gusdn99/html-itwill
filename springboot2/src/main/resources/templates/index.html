@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Boot 2</title>
+    </head>
+    <body>
+        <!--  fragments expression:
+            templates/layout/fragments.html 파일에서 선언된 myHeader 프래그먼트 끼워넣기.
+            div 태그 대신 프래그먼트 태그로 교체(replace)가 되는 방식. -->
+        <div th:replace="~{/layout/fragments :: pageHeader('홈 페이지')}"></div> <!-- 함수의 아규먼트 -->
+        
+	</body>
+</html>

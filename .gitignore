@@ -1,0 +1,277 @@
+# Created by https://www.toptal.com/developers/gitignore/api/windows,java,maven,gradle,eclipse,intellij,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=windows,java,maven,gradle,eclipse,intellij,visualstudiocode
+
+### Eclipse ###
+# 이클립스 메타데이터
+**/.metadata
+**/bin/
+**/tmp/
+**/*.tmp
+**/*.bak
+**/*.swp
+**/*~.nib
+**/local.properties
+**/.settings/
+**/.loadpath
+**/.recommenders
+
+# 외부 도구 빌더
+**/.externalToolBuilders/
+
+# 이클립스 실행 설정
+**/*.launch
+
+# PyDev 설정
+**/*.pydevproject
+
+# CDT 설정
+**/.cproject
+
+# CDT autotools 설정
+**/.autotools
+
+# Java 어노테이션 프로세서
+**/.factorypath
+
+# PDT 설정
+**/.buildpath
+
+# sbteclipse plugin
+**/.target
+
+# Tern plugin
+**/.tern-project
+
+# TeXlipse plugin
+**/.texlipse
+
+# STS (Spring Tool Suite)
+**/.springBeans
+
+# 코드 추천 설정
+**/.recommenders/
+
+# 어노테이션 처리 관련
+**/.apt_generated/
+**/.apt_generated_test/
+
+# Scala IDE 설정
+**/.cache-main
+**/.scala_dependencies
+**/.worksheet
+
+# 프로젝트 설정 파일
+**/.project
+**/.classpath
+
+### Eclipse Patch ###
+# Spring Boot 도구
+**/.sts4-cache/
+
+### Intellij ###
+# IntelliJ IDEA 관련 파일
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/**/usage.statistics.xml
+**/.idea/**/dictionaries
+**/.idea/**/shelf
+
+# AWS 관련 설정
+**/.idea/**/aws.xml
+
+# 자동 생성 파일
+**/.idea/**/contentModel.xml
+
+# 민감한 데이터 파일
+**/.idea/**/dataSources/
+**/.idea/**/dataSources.ids
+**/.idea/**/dataSources.local.xml
+**/.idea/**/sqlDataSources.xml
+**/.idea/**/dynamic.xml
+**/.idea/**/uiDesigner.xml
+**/.idea/**/dbnavigator.xml
+
+# Gradle 설정
+**/.idea/**/gradle.xml
+**/.idea/**/libraries
+
+# Gradle 자동 임포트 설정
+# .idea/artifacts
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# *.iml
+# *.ipr
+
+# CMake 빌드 디렉토리
+**/cmake-build-*/
+
+# Mongo Explorer 플러그인
+**/.idea/**/mongoSettings.xml
+
+# 파일 기반 프로젝트
+**/*.iws
+
+# IntelliJ 출력 디렉토리
+**/out/
+
+# mpeltonen/sbt-idea 플러그인
+**/.idea_modules/
+
+# JIRA 플러그인
+**/atlassian-ide-plugin.xml
+
+# Cursive Clojure 플러그인
+**/.idea/replstate.xml
+
+# SonarLint 플러그인
+**/.idea/sonarlint/
+
+# Crashlytics 플러그인
+**/com_crashlytics_export_strings.xml
+**/crashlytics.properties
+**/crashlytics-build.properties
+**/fabric.properties
+
+# Rest Client
+**/.idea/httpRequests
+
+# Android Studio 캐시
+**/.idea/caches/build_file_checksums.ser
+
+### Intellij Patch ###
+# IntelliJ 파일
+# *.iml
+# modules.xml
+# .idea/misc.xml
+# *.ipr
+
+# Sonarlint 플러그인
+**/.idea/**/sonarlint/
+
+# SonarQube 플러그인
+**/.idea/**/sonarIssues.xml
+
+# Markdown Navigator 플러그인
+**/.idea/**/markdown-navigator.xml
+**/.idea/**/markdown-navigator-enh.xml
+**/.idea/**/markdown-navigator/
+
+# 캐시 파일 관련
+**/.idea/$CACHE_FILE$
+
+# CodeStream 플러그인
+**/.idea/codestream.xml
+
+# Azure Toolkit 플러그인
+**/.idea/**/azureSettings.xml
+
+### Java ###
+# 컴파일된 클래스 파일
+**/*.class
+
+# 로그 파일
+**/*.log
+
+# BlueJ 파일
+**/*.ctxt
+
+# Mobile Tools for Java (J2ME)
+**/.mtj.tmp/
+
+# 패키지 파일
+**/*.jar
+**/*.war
+**/*.nar
+**/*.ear
+**/*.zip
+**/*.tar.gz
+**/*.rar
+
+# 가상머신 크래시 로그
+**/hs_err_pid*
+**/replay_pid*
+
+### Maven ###
+**/target/
+**/pom.xml.tag
+**/pom.xml.releaseBackup
+**/pom.xml.versionsBackup
+**/pom.xml.next
+**/release.properties
+**/dependency-reduced-pom.xml
+**/buildNumber.properties
+**/.mvn/timing.properties
+
+# Maven wrapper JAR
+!**/.mvn/wrapper/maven-wrapper.jar
+
+### VisualStudioCode ###
+# VS Code 설정 파일
+**/.vscode/*
+!**/.vscode/settings.json
+!**/.vscode/tasks.json
+!**/.vscode/launch.json
+!**/.vscode/extensions.json
+!**/.vscode/*.code-snippets
+
+# VS Code 히스토리
+**/.history/
+
+# VS Code 확장프로그램
+**/*.vsix
+
+# VS Code 패치
+**/.history
+**/.ionide
+
+### Windows ###
+# 윈도우 썸네일 캐시
+**/Thumbs.db
+**/Thumbs.db:encryptable
+**/ehthumbs.db
+**/ehthumbs_vista.db
+
+# 윈도우 덤프 파일
+**/*.stackdump
+
+# 윈도우 폴더 설정 파일
+**/[Dd]esktop.ini
+
+# 윈도우 휴지통
+**/$RECYCLE.BIN/
+
+# 윈도우 인스톨러 파일
+**/*.cab
+**/*.msi
+**/*.msix
+**/*.msm
+**/*.msp
+
+# 윈도우 바로가기
+**/*.lnk
+
+### Gradle ###
+**/.gradle
+**/build/
+!**/src/**/build/
+
+# Gradle GUI 설정
+**/gradle-app.setting
+
+# Gradle wrapper JAR 파일 예외 처리
+!**/gradle-wrapper.jar
+
+# Gradle wrapper 속성 파일 예외 처리
+!**/gradle-wrapper.properties
+
+# 프로젝트 캐시
+**/.gradletasknamecache
+
+### Gradle Patch ###
+# Java heap dump
+**/*.hprof
+
+# End of https://www.toptal.com/developers/gitignore/api/windows,java,maven,gradle,eclipse,intellij,visualstudiocode

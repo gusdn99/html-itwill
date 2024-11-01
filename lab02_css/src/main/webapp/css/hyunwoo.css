@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+#top {
+    background-color: mediumorchid;
+    color: white;
+    padding: 15px;
+}
+
+body {
+    background-color: lightsalmon;
+    font: 100% Sans-serif;
+    margin: 20px;
+    line-height: 26px;
+}
+
+h1, ul {
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+hr {
+    margin: 0 30px;
+}
+
+td {
+    width: 600px;
+}
+
+h2 {
+    color: black;
+    margin-bottom: 40px;
+}
+
+.profile {
+    background-color: honeydew;
+    border-top: 10px solid white;
+    border-bottom: 10px solid white;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 1400px;
+    text-align: center;
+}
+
+.profile-image {
+    border: 5px solid honeydew;
+    width: 200px;
+    height: 200px;
+    border-radius: 100px;
+    margin-top: -100px
+}
+
+.text {
+    color: gray;
+    text-align: left;
+    font-size: 1.4em;
+    list-style: none;
+}
+
+.image {
+    background-color: mediumturquoise;
+    border: 2px solid white;
+    width: 160px;
+    height: 160x;
+    border-radius: 100px;
+    margin-top: -20px;
+    margin-left: 140px;
+    padding: 20px;
+}

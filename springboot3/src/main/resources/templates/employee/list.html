@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:replace="~{/layout/fragments :: documentHeader}"></th:block>
+    </head>
+    <body>
+        <th:block th:replace="~{/layout/fragments :: pageHeader('직원 목록')}"></th:block>
+        
+        <main class="m-2">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>사번</th>
+                        <th>이름</th>
+                        <th>전화번호</th>
+                        <th>직책</th>
+                        <th>부서</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="emp : ${page}" th:object="${emp}">
+                        <td>
+                            <a th:href="@{/employee/details/{id}(id=*{employeeId})}" th:text="*{employeeId}"></a>
+                        </td>
+                        <td>
+                            <a th:href="@{/employee/details/{id}(id=*{employeeId})}" th:text="*{employeeName}"></a>
+                        </td>
+                        <td th:text="*{phoneNumber}"></td>
+                        <td th:text="*{jobTitle}"></td>
+                        <td>
+                            <a th:href="@{/department/details(dname=*{departmentName})}"
+                                th:text="*{departmentName}">
+                            </a>
+                        </td>
+                        <!-- 
+                        <td>
+                            <a th:href="@{/job/details/{id}(id=*{job.id})}"
+                                th:text="*{jobTitle}"></a>
+                        </td>
+                         -->
+                        <!-- <td th:text="*{departmentName}"></td>  -->
+                        <!-- 
+                        <td>
+                            <th:block th:if="*{department != null}">
+                                <a th:href="@{/department/details/{id}(id=*{department.id})}"
+                                    th:text="*{departmentName}"></a>
+                            </th:block>
+                            <th:block th:if="*{department == null}">
+                                ---
+                            </th:block>
+                        </td>
+                         -->
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="mt-2" th:insert="~{/layout/fragments :: pagination}"></div>
+            
+        </main>
+        
+        <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+    </body>
+</html>

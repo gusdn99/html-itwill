@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <th:block th:replace="~{/layout/fragments :: documentHeader}"></th:block>
+    </head>
+    <body>
+        <th:block th:replace="~{/layout/fragments :: pageHeader('위치 목록')}"></th:block>
+        
+        <main class="m-2">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>주소</th>
+                        <th>우편번호</th>
+                        <th>도시</th>
+                        <th>구역</th>
+                        <th>나라</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="loc : ${page}" th:object="${loc}">
+                        <td>
+                            <a th:href="@{/location/details/{id}(id=*{id})}" th:text="*{id}"></a>
+                        </td>
+                        <td th:text="*{streetAddress}"></td>
+                        <td th:text="*{postalCode}"></td>
+                        <td>
+                            <a th:href="@{/location/details/{id}(id=*{id})}" th:text="*{city}"></a>
+                        </td>
+                        <td th:text="*{stateProvince}"></td>
+                        <td>
+                            <a th:href="@{/country/details/{id}(id=*{country.id})}"
+                                th:text="*{country.countryName}"></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="mt-2">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item"
+                        th:classappend="${!page.hasPrevious} ? 'disabled'">
+                        <a class="page-link"
+                            th:href="@{|?p=${page.number - 1}|}">이전</a>
+                    </li>
+                    <li class="page-item"
+                        th:each="pageNo : ${#numbers.sequence(0, page.totalPages - 1)}"
+                        th:if="${pageNo >= page.number - 5 && pageNo < page.number + 5}"
+                        th:classappend="${pageNo == page.number} ? 'active'">
+                        <a class="page-link"
+                            th:href="@{|?p=${pageNo}|}"
+                            th:text="${pageNo + 1}"></a>
+                    </li>
+                    <li class="page-item"
+                        th:classappend="${!page.hasNext} ? 'disabled'">
+                        <a class="page-link"
+                            th:href="@{|?p=${page.number + 1}|}">다음</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </main>
+        
+        <th:block th:replace="~{/layout/fragments :: bootstrapJS}"></th:block>
+    </body>
+</html>

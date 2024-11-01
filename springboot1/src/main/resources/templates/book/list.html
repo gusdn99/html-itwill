@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Spring Boot 1</title>
+    </head>
+    <body>
+        <!-- templates/layout/fragments.html 파일의 myHeader 프래그먼트 끼워넣기 -->
+        <div th:replace="~{/layout/fragments :: myHeader('도서 목록 페이지')}"></div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>제목</th>
+                    <th>저자</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="book : ${bookList}" th:object="${book}">
+                    <td th:text="*{id}"></td>
+                    <td th:text="*{title}"></td>
+                    <!-- (조건식) ? (참일 때 사용할 값) : (거짓일 때 사용할 값) -->
+                    <td th:text="*{author != null} ? |*{author.firstName} *{author.lastName}| : 'Unknown'"></td>
+                    <!-- <td th:if="*{author != null}" th:text="|*{author.firstName} * {author.lastName}|" ></td>
+                    <td th:unless="*{author != null}" th:text="Unknown"></td>  -->
+                </tr>
+            </tbody>
+        </table>
+	</body>
+</html>
